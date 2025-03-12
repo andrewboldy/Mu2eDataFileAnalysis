@@ -15,8 +15,8 @@
 #include <iostream>
 
 //CERN ROOT Inclusions
-#include <T1HF.h>
-#include <T1HI.h>
+#include <TH1F.h>
+#include <TH1I.h>
 #include <TFile.h>
 #include <TTree.h>
 #include <TCanvas.h>
