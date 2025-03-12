@@ -67,7 +67,7 @@ void RooUtilParticleInfoHist()
     TH1I* eMinusPCHist = new TH1I("eminusPCHist","Electrons by Process Code", 193, -0.5, 192.5);
 
     //initialize the e+ process code histogram
-    TH1I* ePlustPCHist = new TH1I("eplusPCHist", "Positrons by Process Code", 193, -0.5, 192.5);
+    TH1I* ePlusPCHist = new TH1I("eplusPCHist", "Positrons by Process Code", 193, -0.5, 192.5);
 
     //initialize the muon process code histogram
     TH1I* muMinusPCHist = new TH1I("muminusPCHist", "Muons by Process Code", 193, -0.5, 192.5);
