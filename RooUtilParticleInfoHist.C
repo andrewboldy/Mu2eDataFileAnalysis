@@ -24,7 +24,7 @@
 //Including RooUtil
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
 
-bool DISPLAY_PARTICLE_INFO = false;
+bool DISPLAY_PARTICLE_INFO = true;
 bool DISPLAY_MAXMIN_MOM = true;
 bool CREATE_PC_HISTS = true;
 bool CREATE_MOM_HISTS = true;
@@ -336,7 +336,53 @@ void RooUtilParticleInfoHist()
         deutPCHist->Draw();
         c1->SaveAs("deutPCHist.pdf");
         c1->Clear();
+    }
+    if (CREATE_MOM_HISTS==true)
+    {
+        for (int l_event = 0; l_event < eventNumber; l_event++)
+        {
+            const auto& event = util.GetEvent(l_event);
+            if (event.trkmcsim != nullptr)
+            {
+                for (const auto& trkmcsim : *(event.trkmcsim))
+                {
+                    for (const auto& sim : trkmcsim)
+                    {
+                        //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice 
+                        if (sim.pdg == 11) //electron
+                        {
+                            eMinusStartMomHist->Fill(sim.mom.R());
+                            eMinusEndMomHist->Fill(sim.endmom.R());
+                        }
 
+                        if (sim.pdg == -11) //positron
+                        {
+                            ePlusStartMomHist->Fill(sim.mom.R());
+                            ePlusEndMomHist->Fill(sim.endmom.R());
+                            
+                        }
+
+                        if (sim.pdg == 2212) //proton
+                        {
+                            protonStartMomHist->Fill(sim.mom.R());
+                            protonEndMomHist->Fill(sim.endmom.R());
+                        }
+
+                        if (sim.pdg == 13) //muon
+                        {
+                            muMinusStartMomHist->Fill(sim.mom.R());
+                            muMinusEndMomHist->Fill(sim.endmom.R());
+                        }
+
+                        if (sim.pdg == 1000010020) //deuteron
+                        {
+                            deutStartMomHist->Fill(sim.mom.R());
+                            deutEndMomHist->Fill(sim.endmom.R());
+                        }
+                    }
+                }
+            }
+        }
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
         protonStartMomHist->Draw();
         c1->SaveAs("protonStartMomHist.pdf");
@@ -380,7 +426,8 @@ void RooUtilParticleInfoHist()
         c1->SaveAs("deutEndMomHist.pdf");
         c1->Clear();
 
-        //Eventually delete c1
-        delete c1;
+
     } 
+    //Eventually delete c1
+    delete c1;
 }
