@@ -24,10 +24,12 @@
 //Including RooUtil
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
 
+//Switches
 bool DISPLAY_PARTICLE_INFO = true;
 bool DISPLAY_MAXMIN_MOM = true;
 bool CREATE_PC_HISTS = true;
 bool CREATE_MOM_HISTS = true;
+bool CREATE_PC_MOM_HISTS = true;
 
 
 
@@ -55,7 +57,7 @@ void RooUtilParticleInfoHist()
     float muMinEndMom = 999999999999999999;
     float deutMinStartMom = 999999999999999999;
     float deutMinEndMom = 999999999999999999;
-    
+
     int numBins = 100;
 
     string filename = "/pnfs/mu2e/tape/phy-nts/nts/mu2e/CeEndpointMix1BBTriggered/MDC2020an_v06_01_01_best_v1_3/root/04/2e/nts.mu2e.CeEndpointMix1BBTriggered.MDC2020an_v06_01_01_best_v1_3.001210_00000046.root";
@@ -254,21 +256,35 @@ void RooUtilParticleInfoHist()
 
     //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
     TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
-    
+
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
     //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
     TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, 0, 5);
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
     //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
-    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrobs by End Momentum", numBins, 0, 5);
+    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, 0,5);
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
     TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
-    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, 0, 5);
+   //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
+    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
+
+    //next create a 2-d histogram with start momentum by process code (best to look at electron first!)
+    TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
+    TH2F* ePlusPCStartMomHist = new TH2F("ePlusPCStartMomHist", "Positrons by Process Code and Start Momentum", numBins, ePlusMinStartMom, ePlusMaxStartMom, 193,-0.5,192.5);
+    TH2F* protonPCStartMomHist = new TH2F("protonPCStartMomHist","Protons by Process Code and Start Momentum", numBins, protonMinStartMom, protonMaxStartMom, 193,-0.5,192.5);
+    TH2F* deutPCStartMomHist = new TH2F("deutPCStartMomHist", "Deuterons by Process Code and Start Momentum", numBins, deutMinStartMom, deutMaxStartMom, 193,-0.5,192.5);
+    TH2F* muMinusPCStartMomHist = new TH2F("muMinusPCStartMomHist", "Muons by Process Code and Start Momentum", numBins, muMinStartMom,muMaxStartMom, 193,-0.5,192.5);
+
+    //next create a 2-d histogram with end momentum by process code
+    TH2F* eMinusPCEndMomHist = new TH2F("eMinusPCEndMomHist", "Electrons by Process Code and End Momentum", numBins,eMinusMinEndMom, eMinusMaxEndMom,193,-0.5,192.5);
+    TH2F* ePlusPCEndMomHist = new TH2F("ePlusPCEndMomHist", "Positrons by Process Code and End Momentum", numBins, ePlusMinEndMom, ePlusMaxEndMom, 193,-0.5,192.5);
+    TH2F* protonPCEndMomHist = new TH2F("protonPCEndMomHist","Protons by Process Code and End Momentum", numBins, protonMinEndMom, protonMaxEndMom, 193,-0.5,192.5);
+    TH2F* deutPCEndMomHist = new TH2F("deutPCEndMomHist", "Deuterons by Process Code and End Momentum", numBins, deutMinEndMom, deutMaxEndMom, 193,-0.5,192.5);
+    TH2F* muMinusPCEndMomHist = new TH2F("muMinusPCEndMomHist", "Muons by Process Code and End Momentum", numBins, muMinEndMom,muMaxEndMom, 193,-0.5,192.5);
 
     //Populate the histograms here:
     //Specifically Populating for Process Code
@@ -426,6 +442,98 @@ void RooUtilParticleInfoHist()
 
         deutEndMomHist->Draw();
         c1->SaveAs("deutEndMomHist.pdf");
+        c1->Clear();
+
+
+    } 
+    
+    if (CREATE_PC_MOM_HISTS==true)
+    {
+        for (int m_event = 0; m_event < eventNumber; m_event++)
+        {
+            const auto& event = util.GetEvent(m_event);
+            if (event.trkmcsim != nullptr)
+            {
+                for (const auto& trkmcsim : *(event.trkmcsim))
+                {
+                    for (const auto& sim : trkmcsim)
+                    {
+                        //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice 
+                        if (sim.pdg == 11) //electron
+                        {
+                            eMinusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
+                            eMinusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                        }
+
+                        if (sim.pdg == -11) //positron
+                        {
+                            ePlusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
+                            ePlusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            
+                        }
+
+                        if (sim.pdg == 2212) //proton
+                        {
+                            protonPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
+                            protonPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                        }
+
+                        if (sim.pdg == 13) //muon
+                        {
+                            muMinusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
+                            muMinusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                        }
+
+                        if (sim.pdg == 1000010020) //deuteron
+                        {
+                            deutPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
+                            deutPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                        }
+                    }
+                }
+            }
+        }
+        //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
+        protonPCStartMomHist->Draw();
+        c1->SaveAs("protonPCStartMomHist.pdf");
+        c1->Clear();
+
+        eMinusPCStartMomHist->Draw();
+        c1->SaveAs("eMinusPCStartMomHist.pdf");
+        c1->Clear();
+
+        ePlusPCStartMomHist->Draw();
+        c1->SaveAs("ePlusPCStartMomHist.pdf");
+        c1->Clear();
+
+        muMinusPCStartMomHist->Draw();
+        c1->SaveAs("muMinusPCStartMomHist.pdf");
+        c1->Clear();
+
+        deutPCStartMomHist->Draw();
+        c1->SaveAs("deutPCStartMomHist.pdf");
+        c1->Clear();
+
+
+        //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
+        protonPCEndMomHist->Draw();
+        c1->SaveAs("protonPCEndMomHist.pdf");
+        c1->Clear();
+
+        eMinusPCEndMomHist->Draw();
+        c1->SaveAs("eMinusPCEndMomHist.pdf");
+        c1->Clear();
+
+        ePlusPCEndMomHist->Draw();
+        c1->SaveAs("ePlusPCEndMomHist.pdf");
+        c1->Clear();
+
+        muMinusPCEndMomHist->Draw();
+        c1->SaveAs("muMinusPCEndMomHist.pdf");
+        c1->Clear();
+
+        deutPCEndMomHist->Draw();
+        c1->SaveAs("deutPCEndMomHist.pdf");
         c1->Clear();
 
 
