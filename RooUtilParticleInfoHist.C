@@ -254,19 +254,21 @@ void RooUtilParticleInfoHist()
 
     //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
     TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
-
+    
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
+    //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
+    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, 0, 5);
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
+    //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
+    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrobs by End Momentum", numBins, 0, 5);
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
     TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
-
+    //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
+    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, 0, 5);
 
     //Populate the histograms here:
     //Specifically Populating for Process Code
