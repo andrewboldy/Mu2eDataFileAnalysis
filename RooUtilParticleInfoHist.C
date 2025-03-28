@@ -225,66 +225,66 @@ void RooUtilParticleInfoHist()
     TCanvas* c1 = new TCanvas("c1","c1");
 
     //initialize the proton process code histogram
-    TH1I* protonPCHist = new TH1I("protonPCHist", "Protons by Process Code", 193, -0.5, 192.5);
+    TH1I* protonPCHist = new TH1I("protonPCHist", "MDC2020an_.._best_..00000046 Protons by Process Code", 193, -0.5, 192.5);
 
     //initialize the e- process code histogram
-    TH1I* eMinusPCHist = new TH1I("eminusPCHist","Electrons by Process Code", 193, -0.5, 192.5);
+    TH1I* eMinusPCHist = new TH1I("eminusPCHist","MDC2020an_.._best_..00000046 Electrons by Process Code", 193, -0.5, 192.5);
 
     //initialize the e+ process code histogram
-    TH1I* ePlusPCHist = new TH1I("eplusPCHist", "Positrons by Process Code", 193, -0.5, 192.5);
+    TH1I* ePlusPCHist = new TH1I("eplusPCHist", "MDC2020an_.._best_..00000046 Positrons by Process Code", 193, -0.5, 192.5);
 
     //initialize the muon process code histogram
-    TH1I* muMinusPCHist = new TH1I("muminusPCHist", "Muons by Process Code", 193, -0.5, 192.5);
+    TH1I* muMinusPCHist = new TH1I("muminusPCHist", "MDC2020an_.._best_..00000046 Muons by Process Code", 193, -0.5, 192.5);
 
     //initialize Deuteron process code histogram
-    TH1I* deutPCHist = new TH1I("deutPCHist", "Deuterons by Process Code", 193, -0.5, 192.5);
+    TH1I* deutPCHist = new TH1I("deutPCHist", "MDC2020an_.._best_..00000046 Deuterons by Process Code", 193, -0.5, 192.5);
 
     //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
+    TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "MDC2020an_.._best_..00000046 Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..00000046 Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* ePlusStartMomHist = new TH1F("ePlusStartMomHist", "Positrons by Start Momentum", numBins, ePlusMinStartMom,ePlusMaxStartMom);
+    TH1F* ePlusStartMomHist = new TH1F("ePlusStartMomHist", "MDC2020an_.._best_..00000046 Positrons by Start Momentum", numBins, ePlusMinStartMom,ePlusMaxStartMom);
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* muMinusStartMomHist = new TH1F("muMinusStartMomHist", "Muons by Start Momentum", numBins, muMinStartMom, muMaxStartMom);
+    TH1F* muMinusStartMomHist = new TH1F("muMinusStartMomHist", "MDC2020an_.._best_..00000046 Muons by Start Momentum", numBins, muMinStartMom, muMaxStartMom);
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* deutStartMomHist = new TH1F("deutStartMomHist", "Deuterons by Start Momentum", numBins, deutMinStartMom, deutMaxStartMom);
+    TH1F* deutStartMomHist = new TH1F("deutStartMomHist", "MDC2020an_.._best_..00000046 Deuterons by Start Momentum", numBins, deutMinStartMom, deutMaxStartMom);
 
     //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
+    TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "MDC2020an_.._best_..00000046 Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
-    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, 0, 5);
+    //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "MDC2020an_.._best_..00000046 Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
+    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "MDC2020an_.._best_..00000046 Electrons by End Momentum", numBins, 0, 5);
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
-    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, 0,5);
+    //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "MDC2020an_.._best_..00000046 Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
+    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "MDC2020an_.._best_..00000046 Positrons by End Momentum", numBins, 0,5);
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
+    TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "MDC2020an_.._best_..00000046 Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
-   //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
-    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
+   //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "MDC2020an_.._best_..00000046 Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
+    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "MDC2020an_.._best_..00000046 Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
 
     //next create a 2-d histogram with start momentum by process code (best to look at electron first!)
-    TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
-    TH2F* ePlusPCStartMomHist = new TH2F("ePlusPCStartMomHist", "Positrons by Process Code and Start Momentum", numBins, ePlusMinStartMom, ePlusMaxStartMom, 193,-0.5,192.5);
-    TH2F* protonPCStartMomHist = new TH2F("protonPCStartMomHist","Protons by Process Code and Start Momentum", numBins, protonMinStartMom, protonMaxStartMom, 193,-0.5,192.5);
-    TH2F* deutPCStartMomHist = new TH2F("deutPCStartMomHist", "Deuterons by Process Code and Start Momentum", numBins, deutMinStartMom, deutMaxStartMom, 193,-0.5,192.5);
-    TH2F* muMinusPCStartMomHist = new TH2F("muMinusPCStartMomHist", "Muons by Process Code and Start Momentum", numBins, muMinStartMom,muMaxStartMom, 193,-0.5,192.5);
+    TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "MDC2020an_.._best_..00000046 Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
+    TH2F* ePlusPCStartMomHist = new TH2F("ePlusPCStartMomHist", "MDC2020an_.._best_..00000046 Positrons by Process Code and Start Momentum", numBins, ePlusMinStartMom, ePlusMaxStartMom, 193,-0.5,192.5);
+    TH2F* protonPCStartMomHist = new TH2F("protonPCStartMomHist","MDC2020an_.._best_..00000046 Protons by Process Code and Start Momentum", numBins, protonMinStartMom, protonMaxStartMom, 193,-0.5,192.5);
+    TH2F* deutPCStartMomHist = new TH2F("deutPCStartMomHist", "MDC2020an_.._best_..00000046 Deuterons by Process Code and Start Momentum", numBins, deutMinStartMom, deutMaxStartMom, 193,-0.5,192.5);
+    TH2F* muMinusPCStartMomHist = new TH2F("muMinusPCStartMomHist", "MDC2020an_.._best_..00000046 Muons by Process Code and Start Momentum", numBins, muMinStartMom,muMaxStartMom, 193,-0.5,192.5);
 
     //next create a 2-d histogram with end momentum by process code
-    TH2F* eMinusPCEndMomHist = new TH2F("eMinusPCEndMomHist", "Electrons by Process Code and End Momentum", numBins,eMinusMinEndMom, eMinusMaxEndMom,193,-0.5,192.5);
-    TH2F* ePlusPCEndMomHist = new TH2F("ePlusPCEndMomHist", "Positrons by Process Code and End Momentum", numBins, ePlusMinEndMom, ePlusMaxEndMom, 193,-0.5,192.5);
-    TH2F* protonPCEndMomHist = new TH2F("protonPCEndMomHist","Protons by Process Code and End Momentum", numBins, protonMinEndMom, protonMaxEndMom, 193,-0.5,192.5);
-    TH2F* deutPCEndMomHist = new TH2F("deutPCEndMomHist", "Deuterons by Process Code and End Momentum", numBins, deutMinEndMom, deutMaxEndMom, 193,-0.5,192.5);
-    TH2F* muMinusPCEndMomHist = new TH2F("muMinusPCEndMomHist", "Muons by Process Code and End Momentum", numBins, muMinEndMom,muMaxEndMom, 193,-0.5,192.5);
+    TH2F* eMinusPCEndMomHist = new TH2F("eMinusPCEndMomHist", "MDC2020an_.._best_..00000046 Electrons by Process Code and End Momentum", numBins,eMinusMinEndMom, eMinusMaxEndMom,193,-0.5,192.5);
+    TH2F* ePlusPCEndMomHist = new TH2F("ePlusPCEndMomHist", "MDC2020an_.._best_..00000046 Positrons by Process Code and End Momentum", numBins, ePlusMinEndMom, ePlusMaxEndMom, 193,-0.5,192.5);
+    TH2F* protonPCEndMomHist = new TH2F("protonPCEndMomHist","MDC2020an_.._best_..00000046 Protons by Process Code and End Momentum", numBins, protonMinEndMom, protonMaxEndMom, 193,-0.5,192.5);
+    TH2F* deutPCEndMomHist = new TH2F("deutPCEndMomHist", "MDC2020an_.._best_..00000046 Deuterons by Process Code and End Momentum", numBins, deutMinEndMom, deutMaxEndMom, 193,-0.5,192.5);
+    TH2F* muMinusPCEndMomHist = new TH2F("muMinusPCEndMomHist", "MDC2020an_.._best_..00000046 Muons by Process Code and End Momentum", numBins, muMinEndMom,muMaxEndMom, 193,-0.5,192.5);
 
     //Populate the histograms here:
     //Specifically Populating for Process Code
