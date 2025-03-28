@@ -379,22 +379,27 @@ void RooUtilParticleInfoHist()
         }
         //Draw the Histograms, save them as pdfs and then clear before drawing the next one
         //PC Histograms First
-        protonPCHist->Draw();
+        protonPCHist->SetStats(0);
+       	protonPCHist->Draw();
         c1->SaveAs("protonHists/protonPCHist.pdf");
         c1->Clear();
 
+	eMinusPCHist->SetStats(0);
         eMinusPCHist->Draw();
         c1->SaveAs("eMinusHists/eMinusPCHist.pdf");
         c1->Clear();
 
+	ePlusPCHist->SetStats(0);
         ePlusPCHist->Draw();
         c1->SaveAs("ePlusHists/ePlusPCHist.pdf");
         c1->Clear();
 
+	muMinusPCHist->SetStats(0);
         muMinusPCHist->Draw();
         c1->SaveAs("muMinusHists/muMinusPCHist.pdf");
         c1->Clear();
 
+	deutPCHist->SetStats(0);
         deutPCHist->Draw();
         c1->SaveAs("deutHists/deutPCHist.pdf");
         c1->Clear();
@@ -446,44 +451,54 @@ void RooUtilParticleInfoHist()
             }
         }
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
-        protonStartMomHist->Draw();
+        protonStartMomHist->SetStats(0);
+	protonStartMomHist->Draw();
         c1->SaveAs("protonHists/protonStartMomHist.pdf");
         c1->Clear();
 
+	eMinusStartMomHist->SetStats(0);
         eMinusStartMomHist->Draw();
         c1->SaveAs("eMinusHists/eMinusStartMomHist.pdf");
         c1->Clear();
 
+	ePlusStartMomHist->SetStats(0);
         ePlusStartMomHist->Draw();
         c1->SaveAs("ePlusHists/ePlusStartMomHist.pdf");
         c1->Clear();
 
+	muMinusStartMomHist->SetStats(0);
         muMinusStartMomHist->Draw();
         c1->SaveAs("muMinusHists/muMinusStartMomHist.pdf");
         c1->Clear();
 
+	deutStartMomHist->SetStats(0);
         deutStartMomHist->Draw();
         c1->SaveAs("deutHists/deutStartMomHist.pdf");
         c1->Clear();
 
 
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
-        protonEndMomHist->Draw();
+        protonEndMomHist->SetStats(0);
+       	protonEndMomHist->Draw();
         c1->SaveAs("protonHists/protonEndMomHist.pdf");
         c1->Clear();
 
+	eMinusEndMomHist->SetStats(0);
         eMinusEndMomHist->Draw();
         c1->SaveAs("eMinusHists/eMinusEndMomHist.pdf");
         c1->Clear();
 
+	ePlusEndMomHist->SetStats(0);
         ePlusEndMomHist->Draw();
         c1->SaveAs("ePlusHists/ePlusEndMomHist.pdf");
         c1->Clear();
 
+	muMinusEndMomHist->SetStats(0);
         muMinusEndMomHist->Draw();
         c1->SaveAs("muMinusHists/muMinusEndMomHist.pdf");
         c1->Clear();
 
+	deutEndMomHist->SetStats(0);
         deutEndMomHist->Draw();
         c1->SaveAs("deutHists/deutEndMomHist.pdf");
         c1->Clear();
@@ -538,44 +553,54 @@ void RooUtilParticleInfoHist()
             }
         }
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
-        protonPCStartMomHist->Draw();
+        protonPCStartMomHist->SetStats(0);
+       	protonPCStartMomHist->Draw();
         c1->SaveAs("protonHists/protonPCStartMomHist.pdf");
         c1->Clear();
 
+	eMinusPCStartMomHist->SetStats(0);
         eMinusPCStartMomHist->Draw();
         c1->SaveAs("eMinusHists/eMinusPCStartMomHist.pdf");
         c1->Clear();
 
+	ePlusPCStartMomHist->SetStats(0);
         ePlusPCStartMomHist->Draw();
         c1->SaveAs("ePlusHists/ePlusPCStartMomHist.pdf");
         c1->Clear();
 
+	muMinusPCStartMomHist->SetStats(0);
         muMinusPCStartMomHist->Draw();
         c1->SaveAs("muMinusHists/muMinusPCStartMomHist.pdf");
         c1->Clear();
 
+	deutPCStartMomHist->SetStats(0);
         deutPCStartMomHist->Draw();
         c1->SaveAs("deutHists/deutPCStartMomHist.pdf");
         c1->Clear();
 
 
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
-        protonPCEndMomHist->Draw();
+        protonPCEndMomHist->SetStats(0);
+	protonPCEndMomHist->Draw();
         c1->SaveAs("protonHists/protonPCEndMomHist.pdf");
         c1->Clear();
 
+	eMinusPCEndMomHist->SetStats(0);
         eMinusPCEndMomHist->Draw();
         c1->SaveAs("eMinusHists/eMinusPCEndMomHist.pdf");
         c1->Clear();
 
+	ePlusPCEndMomHist->SetStats(0);
         ePlusPCEndMomHist->Draw();
         c1->SaveAs("ePlusHists/ePlusPCEndMomHist.pdf");
         c1->Clear();
 
+	muMinusPCEndMomHist->SetStats(0);
         muMinusPCEndMomHist->Draw();
         c1->SaveAs("muMinusHists/muMinusPCEndMomHist.pdf");
         c1->Clear();
 
+	deutPCEndMomHist->SetStats(0);
         deutPCEndMomHist->Draw();
         c1->SaveAs("deutHists/deutPCEndMomHist.pdf");
         c1->Clear();
