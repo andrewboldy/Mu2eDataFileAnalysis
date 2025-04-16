@@ -76,16 +76,19 @@ void RooUtilParticleInfoHist()
             {
                 for (const auto& trkmcsim : *(event.trkmcsim))
                 {
-                    cout << "New Track!" << endl;
+                    // cout << "New Track!" << endl;
                     for (const auto& sim : trkmcsim)
-                    {  
+                    { 
+		//	if (sim.pdg != 1000290660 && sim.pdg != 1000080160 && sim.pdg != 1000791980 && sim.pdg != -321 && sim.pdg !=-13 && sim.pdg != 310 && sim.pdg != 321 && sim.pdg != 3112 && sim.pdg != 130 && sim.pdg != 211 && sim.pdg != 3122 && sim.pdg != 3212 && sim.pdg != -211 && sim.pdg != 2112 && sim.pdg != 22 && sim.pdg != 11 && sim.pdg != -11 && sim.pdg != 13 && sim.pdg != 2212 && sim.pdg != 1000010020)
+			//{	
                         cout << "Entry Number: " << i_event
                              << " PDG Number: " << sim.pdg
                              << " Tracker Hits: " << sim.nhits
                              << " Process Code: " << sim.startCode
                             << " Rank: " << sim.rank << endl;
                                 //if want to manually print these out in the console, open the file in root, then enter the tree and use the scan feature-> ntuple->Scan("trkmcsim.pdg:trkmcsim.nhits:trkmcsim.startCode:trkmcsim.rank"
-                    }
+                    	//}
+		    }
                 } 
             }
         }
@@ -100,15 +103,17 @@ void RooUtilParticleInfoHist()
             {
                 for (const auto& trkmcsim : *(event.trkmcsim))
                 {
-                    cout << "New Track!" << endl;
+                    //cout << "New Track!" << endl;
                     for (const auto& sim : trkmcsim)
                     {
-                        cout << "Entry Number: " << i_event
-                             << " PDG Number: " << sim.pdg
-                             << " Start Momentum: " << sim.mom.R()
-                             << " End Momentum: " << sim.endmom.R()
-                             << endl;
-                    
+			//if (sim.pdg != 3122 && sim.pdg != 3212 && sim.pdg != -211 && sim.pdg != 2112 && sim.pdg != 22 && sim.pdg != 11 && sim.pdg != -11 && sim.pdg != 13 && sim.pdg != 2212 && sim.pdg != 1000010020)
+			//{
+                       // cout << "Entry Number: " << i_event
+                       //      << " PDG Number: " << sim.pdg
+                       //      << " Start Momentum: " << sim.mom.R()
+                       //      << " End Momentum: " << sim.endmom.R()
+                       //      << endl;
+                    //}
                         if (sim.pdg == 11)
                         {
                             if (sim.mom.R() > eMinusMaxStartMom)
