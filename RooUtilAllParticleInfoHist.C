@@ -41,7 +41,7 @@ void RooUtilAllParticleInfoHist()
     TChain* ntuple = new TChain("EventNtuple/ntuple");
 
     //Initialize the file reader
-    ifstream input_filelist("filelists/MDC2020anBestFilelist.list");
+    ifstream input_filelist("filelists/MDC2020anBestFileList_staged.list");
     
     //begin reading the file after checking its open
     if (input_filelist.is_open())
