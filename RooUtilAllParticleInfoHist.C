@@ -55,8 +55,8 @@ void RooUtilAllParticleInfoHist()
     }
 
     //Print out the Number of Files in the List
-    int numFiles = ntuple->GetEntries();
-    cout << "There are now " << numFiles << " in the chaint. Beginning analysis, item by item." << endl;
+    int numFiles = ntuple->GetListOfFiles()->GetEntries();
+    cout << "There are now " << numFiles << " files in the chain. Beginning analysis, item by item." << endl;
 
     for (int i_file = 0; i_file < numFiles; i_file++)
     {
@@ -75,19 +75,19 @@ void RooUtilAllParticleInfoHist()
                 {
                     for (const auto& trkmcsim : *(event.trkmcsim))
                     {
-                        cout << "New Track!" << endl;
+                       // cout << "New Track!" << endl;
                         for (const auto& sim : trkmcsim)
                         {
-                            cout << "Entry Number: " << i_event
-                            << " PDG Number: " << sim.pdg
-                            << " Tracker Hits: " << sim.nhits
-                            << " Process Code: " << sim.startCode
-                           << " Rank: " << sim.rank << endl;
+                           // cout << "Entry Number: " << i_event
+                           // << " PDG Number: " << sim.pdg
+                           // << " Tracker Hits: " << sim.nhits
+                           // << " Process Code: " << sim.startCode
+                           //<< " Rank: " << sim.rank << endl;
                         }
                     }
                 }
             }
         }
-
     }
+    cout << "Program complete." << endl;
 }
