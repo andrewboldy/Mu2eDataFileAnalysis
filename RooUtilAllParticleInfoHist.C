@@ -34,6 +34,7 @@
 
 //Switches
 bool DISPLAY_PARTICLE_INFO = true;
+bool DISPLAY_PARTICLE_INFO = true;
 
 void RooUtilAllParticleInfoHist()
 {
@@ -41,15 +42,17 @@ void RooUtilAllParticleInfoHist()
     TChain* ntuple = new TChain("EventNtuple/ntuple");
 
     //Initialize the file reader
-    ifstream input_filelist("filelists/MDC2020anBestFileList_staged.list");
-    
+    //ifstream input_filelist("PIDHelperPrograms/filelists/MDC2020anBestFileList_staged.list");
+    string filename = string(getenv("DATA"))+"/myfiles.list";
+    ifstream input_filelist(filename);
     //begin reading the file after checking its open
     if (input_filelist.is_open())
     {
         string filename;
         while(getline(input_filelist,filename))
         {
-            ntuple->Add(filename.c_str()); //add filenames to the TChain line by line from the list
+		cout << "File name: " << filename << endl;
+		ntuple->Add(filename.c_str()); //add filenames to the TChain line by line from the list
         }
         input_filelist.close(); //close the filelist
     }
@@ -58,13 +61,17 @@ void RooUtilAllParticleInfoHist()
     int numFiles = ntuple->GetListOfFiles()->GetEntries();
     cout << "There are now " << numFiles << " files in the chain. Beginning analysis, item by item." << endl;
 
-    for (int i_file = 0; i_file < numFiles; i_file++)
-    {
-        ntuple->GetEntry(i_file); //get each entry in the ntuple for each file name
-        string file = ntuple->GetCurrentFile()->GetName();  //pull the file name
-        RooUtil util(file); //initialize RooUtil 
-        int eventNumber = util.GetNEvents();
-        cout << "File number: " << i_file+1 << " has " << eventNumber << " events." << endl;
+    //for (int i_file = 0; i_file < numFiles; i_file++)
+    //{
+       // cout << ntuple->GetCurrentFile()->GetEntry(i_file) << endl;
+	//ntuple->GetCurrentFile(i_file); //get each entry in the ntuple for each file name
+        //string file = ntuple->GetCurrentFile()->GetName();  //pull the file name
+        //string chainName = "ntuple";
+    	//RooUtil util(chainName); //initialize RooUtil 
+        RooUtil util(filename); 
+	int eventNumber = util.GetNEvents();
+	cout << "There are " << eventNumber << " events to be run over." << endl;
+        //cout << "File number: " << i_file+1 << " has " << eventNumber << " events." << endl;
 
         if (DISPLAY_PARTICLE_INFO == true)
         {
@@ -75,19 +82,18 @@ void RooUtilAllParticleInfoHist()
                 {
                     for (const auto& trkmcsim : *(event.trkmcsim))
                     {
-                       // cout << "New Track!" << endl;
+                        cout << "New Track!" << endl;
                         for (const auto& sim : trkmcsim)
                         {
-                           // cout << "Entry Number: " << i_event
-                           // << " PDG Number: " << sim.pdg
-                           // << " Tracker Hits: " << sim.nhits
-                           // << " Process Code: " << sim.startCode
-                           //<< " Rank: " << sim.rank << endl;
+                            cout << "Entry Number: " << i_event
+                            << " PDG Number: " << sim.pdg
+                            << " Tracker Hits: " << sim.nhits
+                            << " Process Code: " << sim.startCode
+                           << " Rank: " << sim.rank << endl;
                         }
                     }
                 }
             }
         }
-    }
-    cout << "Program complete." << endl;
+  cout << "Program complete." << endl;
 }
