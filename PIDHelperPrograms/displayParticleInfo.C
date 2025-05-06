@@ -7,8 +7,11 @@
 
 //----------------------------------------------------------------------------------
 
-//Program that displays particle information of interest, specifically: PDG Number, Tracker Hits, Process Code, and Rank
-//INCOMPLETE
+//Displays particle information for a list of files. 
+//TESTING STAGE 
+// 1) Make sure it prints out the number of files and the number of events in each file.
+// 2) Check to make sure it prints the particle PDG number by event.
+// 3) Check to see if it will print all the information for all the particles.
 
 //----------------------------------------------------------------------------------
 
@@ -20,49 +23,43 @@
 #include <iostream>
 
 //CERN ROOT Inclusions
-#include <TFile.h>
 
 //Mu2e Inclusions
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
 
 //Personal Inclusions (if any)
-#include "makeTChain.C"
 
 void displayParticleInfo(std::string filelist)
 {
-  TChain* ntuple = makeTChain(filelist); //Pointing to the TChain created in the makeTChain program
-
-  TObjArray* fileElements = ntuple->GetListOfFiles(); //constructs an array of files 
-
-  int numFiles = fileElements->GetEntries(); //construct the number of files and outpu thte number of files 
-  std::cout << "Number of files to work through: " << numFiles << std::endl;
-
-  for (int i; i < numFiles; i++)
+  ifstream listOfFiles(filelist);
+  int fileCount = 0;
+  string line;
+  while (getline(listOfFiles,line))
   {
-    TFile* file = (TFile*)fileElements->At(i);
-    std::string fileName = file->GetName();
-    std::cout << "Working on file: " << fileName << std::endl;
-    RooUtil util(fileName;
-
-    int eventNumber = 
-    for (int i_event = 0; i_event < eventNumber; i_event++)
+    if (!line.empty())
     {
-        const auto& event = util.GetEvent(i_event);
-        if (event.trkmcsim != nullptr)
+      fileCount++;
+    }
+  }
+  RooUtil util(filelist);
+  int numEntries = util.GetNEvents();
+  cout << "There are " << numEntries << " entries. Printing PDG, process code, number of hits, and rank for each." << endl;
+  for (int i_event = 0; i_event < numEntries; i_event++)
+  {
+    const auto& event = util.GetEvent(i_event);
+    if (event.trkmcsim != nullptr) 
+    {
+      for (const auto& trkmcsim : *(event.trkmcsim)) 
+      {
+        for (const auto& sim : trkmcsim) 
         {
-            for (const auto& trkmcsim : *(event.trkmcsim))
-            {
-                //cout << "New Track!" << endl;
-                for (const auto& sim : trkmcsim)
-                {
-                    cout << "Entry Number: " << i_event
-                    << " PDG Number: " << sim.pdg
-                    << " Tracker Hits: " << sim.nhits
-                    << " Process Code: " << sim.startCode
-                   << " Rank: " << sim.rank << endl;
-                }
-            }
+          cout << "Entry Number: " << i_event + 1
+               << " PDG Number: " << sim.pdg
+               << " Tracker Hits: " << sim.nhits
+               << " Process Code: " << sim.startCode
+               << " Rank: " << sim.rank << endl; 
         }
+      }
     }
   }
 }
