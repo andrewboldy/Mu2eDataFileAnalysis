@@ -9,7 +9,7 @@
 
 //Creates particle start and end momentum histograms and saves them in the appropriate folder.
 //Testing --> Have names of histograms to be denoted as "Test". For formal analysis, switch to the non-test lines
-
+//Next step --> Make the real histogram names dynamic
 //----------------------------------------------------------------------------------
 
 //My Inclusions
@@ -23,7 +23,6 @@
 //CERN ROOT Inclusions
 #include <TCanvas.h>
 #include <TH1F.h>
-
 //Mu2e Inclusions
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
 
@@ -187,11 +186,10 @@ void makeMomHists(string filelist)
             }
         }
   //Create the Histograms
-   cout << "Calculation Complete!" << endl;
-   cout << "Now creating histograms for start and end momenta!" << endl;  
-  //Create TCanvas
+  cout << "Calculation Complete!" << endl;
+  cout << "Now creating histograms for start and end momenta!" << endl;
+  //Make the TCanvas
   TCanvas* c1 = new TCanvas("c1","c1");
-
   //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
     TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "MDC2020an_.._best_..Test Files Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
     //TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "MDC2020an_.._best_..All Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
@@ -293,54 +291,65 @@ void makeMomHists(string filelist)
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonStartMomHist->SetStats(0);
       protonStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       eMinusStartMomHist->SetStats(0);
       eMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusStartMomHist->SetStats(0);
       ePlusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusStartMomHist->SetStats(0);
       muMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutStartMomHist->SetStats(0);
       deutStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
 
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonEndMomHist->SetStats(0);
       protonEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
       c1->Clear();
 
       eMinusEndMomHist->SetStats(0);
       eMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusEndMomHist->SetStats(0);
       ePlusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusEndMomHist->SetStats(0);
       muMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutEndMomHist->SetStats(0);
       deutEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHist.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistTest.pdf");
+      //c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
+    delete c1;
 }
