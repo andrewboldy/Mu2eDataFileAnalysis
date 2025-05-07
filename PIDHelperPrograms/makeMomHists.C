@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------
 
-//makeMomentumHists(string filelist)
+//makeMomHists(string filelist)
 //Written by Andrew Boldy
 //University of South Carolina
 //Summer 2025
@@ -29,7 +29,7 @@
 
 //Personal Inclusions (if any)
 
-void makeMomentumHists(string filelist)
+void makeMomHists(string filelist)
 {
   //Open up the file and create the RooUtil and then check the file
   //Print out the number of files
