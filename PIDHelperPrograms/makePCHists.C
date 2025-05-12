@@ -22,10 +22,10 @@
 
 //CERN ROOT Inclusions
 #include <TCanvas.h>
-#include <TH1D.h>
-
+#include <TH1I.h>
 //Mu2e Inclusions
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
+#include "EventNtuple/utils/rooutil/inc/common_cuts.hh"
 
 //Personal Inclusions (if any)
 
@@ -52,66 +52,64 @@ void makePCHists(string filelist)
 
   //initialize the proton process code histogram
   TH1I* protonPCHist = new TH1I("protonPCHist", "Test Files Protons by Process Code", 193, -0.5, 192.5);
-  //TH1I* protonPCHist = new TH1I("protonPCHist", "MDC2020an_.._best_..00000046 Protons by Process Code", 193, -0.5, 192.5);
+  //TH1I* protonPCHist = new TH1I("protonPCHist", "MDC2020an_.._best_.. All Protons by Process Code", 193, -0.5, 192.5);
   protonPCHist->GetXaxis()->SetTitle("Assigned Process Code from ProcessCode.hh");
 
   //initialize the e- process code histogram
   TH1I* eMinusPCHist = new TH1I("eminusPCHist","Test Files Electrons by Process Code", 193, -0.5, 192.5);
-  //TH1I* eMinusPCHist = new TH1I("eminusPCHist","MDC2020an_.._best_..00000046 Electrons by Process Code", 193, -0.5, 192.5);
+  //TH1I* eMinusPCHist = new TH1I("eminusPCHist","MDC2020an_.._best_.. All Electrons by Process Code", 193, -0.5, 192.5);
   eMinusPCHist->GetXaxis()->SetTitle("Assigned Process Code from ProcessCode.hh");
 
   //initialize the e+ process code histogram
   TH1I* ePlusPCHist = new TH1I("eplusPCHist", "Test Files Positrons by Process Code", 193, -0.5, 192.5);
-  //TH1I* ePlusPCHist = new TH1I("eplusPCHist", "MDC2020an_.._best_..00000046 Positrons by Process Code", 193, -0.5, 192.5);
+  //TH1I* ePlusPCHist = new TH1I("eplusPCHist", "MDC2020an_.._best_.. All Positrons by Process Code", 193, -0.5, 192.5);
   ePlusPCHist->GetXaxis()->SetTitle("Assigned Process Code from ProcessCode.hh");
 
   //initialize the muon process code histogram
   TH1I* muMinusPCHist = new TH1I("muminusPCHist", "TestFiles Muons by Process Code", 193, -0.5, 192.5);
-  //TH1I* muMinusPCHist = new TH1I("muminusPCHist", "MDC2020an_.._best_..00000046 Muons by Process Code", 193, -0.5, 192.5);
+  //TH1I* muMinusPCHist = new TH1I("muminusPCHist", "MDC2020an_.._best_.. All Muons by Process Code", 193, -0.5, 192.5);
   muMinusPCHist->GetXaxis()->SetTitle("Assigned Process Code from ProcessCode.hh");
 
   //initialize Deuteron process code histogram
   TH1I* deutPCHist = new TH1I("deutPCHist", "Test Files Deuterons by Process Code", 193, -0.5, 192.5);
-  //TH1I* deutPCHist = new TH1I("deutPCHist", "MDC2020an_.._best_..00000046 Deuterons by Process Code", 193, -0.5, 192.5);
+  //TH1I* deutPCHist = new TH1I("deutPCHist", "MDC2020an_.._best_.. All Deuterons by Process Code", 193, -0.5, 192.5);
   deutPCHist->GetXaxis()->SetTitle("Assigned Process Code from ProcessCode.hh");
 
   //Populating the histograms
   for (int j_event = 0; j_event < numEvents; j_event++)
        {
-           const auto& event = util.GetEvent(j_event);
-           if (event.trkmcsim != nullptr)
-           {
-               for (const auto& trkmcsim : *(event.trkmcsim))
+          auto& event = util.GetEvent(j_event);
+          auto e_minus_tracks = event.GetTracks(is_e_minus);
+               for (auto& track : e_minus_tracks)
                {
-                   for (const auto& sim : trkmcsim)
+                   for (const auto& mctrack : *(track.trkmcsim))
                    {
                        //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice
-                       if (sim.pdg == 11) //electron
+                       if (mctrack.pdg == 11) //electron
                        {
-                           eMinusPCHist->Fill(sim.startCode);
+                           eMinusPCHist->Fill(mctrack.startCode);
                        }
 
-                       if (sim.pdg == -11) //positron
+                       if (mctrack.pdg == -11) //positron
                        {
-                           ePlusPCHist->Fill(sim.startCode);
+                           ePlusPCHist->Fill(mctrack.startCode);
                        }
 
-                       if (sim.pdg == 2212) //proton
+                       if (mctrack.pdg == 2212) //proton
                        {
-                           protonPCHist->Fill(sim.startCode);
+                           protonPCHist->Fill(mctrack.startCode);
                        }
 
-                       if (sim.pdg == 13) //muon
+                       if (mctrack.pdg == 13) //muon
                        {
-                           muMinusPCHist->Fill(sim.startCode);
+                           muMinusPCHist->Fill(mctrack.startCode);
                        }
 
-                       if (sim.pdg == 1000010020) //deuteron
+                       if (mctrack.pdg == 1000010020) //deuteron
                        {
-                           deutPCHist->Fill(sim.startCode);
+                           deutPCHist->Fill(mctrack.startCode);
                        }
-                   }
-               }
+                    }
            }
        }
        //Draw the Histograms, save them as pdfs and then clear before drawing the next one
@@ -122,27 +120,29 @@ void makePCHists(string filelist)
        //c1->SaveAs("multiFileHistograms/protonHists/protonPCHistMDC2020an_best.pdf");
        c1->Clear();
 
- eMinusPCHist->SetStats(0);
+       eMinusPCHist->SetStats(0);
        eMinusPCHist->Draw();
        c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCHistTest.pdf");
        //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCHistMDC2020an_best.pdf");
        c1->Clear();
 
- ePlusPCHist->SetStats(0);
+       ePlusPCHist->SetStats(0);
        ePlusPCHist->Draw();
        c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCHistTest.pdf");
        //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCHistMDC2020an_best.pdf");
        c1->Clear();
 
- muMinusPCHist->SetStats(0);
+       muMinusPCHist->SetStats(0);
        muMinusPCHist->Draw();
        c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCHistTest.pdf");
        //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCHistMDC2020an_best.pdf");
        c1->Clear();
 
- deutPCHist->SetStats(0);
+       deutPCHist->SetStats(0);
        deutPCHist->Draw();
        c1->SaveAs("multiFileHistograms/deutHists/deutPCHistTest.pdf");
        //c1->SaveAs("multiFileHistograms/deutHists/deutPCHistMDC2020an_best.pdf");
        c1->Clear();
+
+  delete c1;
 }

@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------
 
-//makePCandMomists(string filelist)
+//makePCandMomHists(string filelist)
 //Written by Andrew Boldy
 //University of South Carolina
 //Summer 2025
@@ -25,6 +25,7 @@
 #include <TH2F.h>
 //Mu2e Inclusions
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
+#include "EventNtuple/utils/rooutil/inc/common_cuts.hh"
 
 //Personal Inclusions (if any)
 
@@ -76,111 +77,109 @@ void makePCandMomHists(string filelist)
 
   for (int i_event=0; i_event < numEvents;i_event++)
         {
-            const auto& event = util.GetEvent(i_event);
-            if (event.trkmcsim != nullptr)
-            {
-                for (const auto& trkmcsim : *(event.trkmcsim))
+            auto& event = util.GetEvent(i_event);
+            auto e_minus_tracks = event.GetTracks(is_e_minus);
+                for (auto& track : e_minus_tracks)
                 {
-                    for (const auto& sim : trkmcsim)
+                    for (const auto& mctrack : *(track.trkmcsim))
                     {
-                        if (sim.pdg == 11)
+                        if (mctrack.pdg == 11)
                         {
-                            if (sim.mom.R() > eMinusMaxStartMom)
+                            if (mctrack.mom.R() > eMinusMaxStartMom)
                             {
-                                eMinusMaxStartMom = sim.mom.R();
+                                eMinusMaxStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() > eMinusMaxEndMom)
+                            if (mctrack.endmom.R() > eMinusMaxEndMom)
                             {
-                                eMinusMaxEndMom = sim.endmom.R();
+                                eMinusMaxEndMom = mctrack.endmom.R();
                             }
-                            if (sim.mom.R() < eMinusMinStartMom)
+                            if (mctrack.mom.R() < eMinusMinStartMom)
                             {
-                                eMinusMinStartMom = sim.mom.R();
+                                eMinusMinStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() < eMinusMinEndMom)
+                            if (mctrack.endmom.R() < eMinusMinEndMom)
                             {
-                                eMinusMinEndMom = sim.endmom.R();
+                                eMinusMinEndMom = mctrack.endmom.R();
                             }
                         }
 
-                        if (sim.pdg == -11)
+                        if (mctrack.pdg == -11)
                         {
-                            if (sim.mom.R() > ePlusMaxStartMom)
+                            if (mctrack.mom.R() > ePlusMaxStartMom)
                             {
-                                ePlusMaxStartMom = sim.mom.R();
+                                ePlusMaxStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() > ePlusMaxEndMom)
+                            if (mctrack.endmom.R() > ePlusMaxEndMom)
                             {
-                                ePlusMaxEndMom = sim.endmom.R();
+                                ePlusMaxEndMom = mctrack.endmom.R();
                             }
-                            if (sim.mom.R() < ePlusMinStartMom)
+                            if (mctrack.mom.R() < ePlusMinStartMom)
                             {
-                                ePlusMinStartMom = sim.mom.R();
+                                ePlusMinStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() < ePlusMinEndMom)
+                            if (mctrack.endmom.R() < ePlusMinEndMom)
                             {
-                                ePlusMinEndMom = sim.endmom.R();
+                                ePlusMinEndMom = mctrack.endmom.R();
                             }
                         }
-                        if (sim.pdg == 13)
+                        if (mctrack.pdg == 13)
                         {
-                            if (sim.mom.R() > muMaxStartMom)
+                            if (mctrack.mom.R() > muMaxStartMom)
                             {
-                                muMaxStartMom = sim.mom.R();
+                                muMaxStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() > muMaxEndMom)
+                            if (mctrack.endmom.R() > muMaxEndMom)
                             {
-                                muMaxEndMom = sim.endmom.R();
+                                muMaxEndMom = mctrack.endmom.R();
                             }
-                            if (sim.mom.R() < muMinStartMom)
+                            if (mctrack.mom.R() < muMinStartMom)
                             {
-                                muMinStartMom = sim.mom.R();
+                                muMinStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() < muMinEndMom)
+                            if (mctrack.endmom.R() < muMinEndMom)
                             {
-                                muMinEndMom = sim.endmom.R();
+                                muMinEndMom = mctrack.endmom.R();
                             }
                         }
-                        if (sim.pdg == 2212)
+                        if (mctrack.pdg == 2212)
                         {
-                            if (sim.mom.R() > protonMaxStartMom)
+                            if (mctrack.mom.R() > protonMaxStartMom)
                             {
-                                protonMaxStartMom = sim.mom.R();
+                                protonMaxStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() > protonMaxEndMom)
+                            if (mctrack.endmom.R() > protonMaxEndMom)
                             {
-                                protonMaxEndMom = sim.endmom.R();
+                                protonMaxEndMom = mctrack.endmom.R();
                             }
-                            if (sim.mom.R() < protonMinStartMom)
+                            if (mctrack.mom.R() < protonMinStartMom)
                             {
-                                protonMinStartMom = sim.mom.R();
+                                protonMinStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() < protonMinEndMom)
+                            if (mctrack.endmom.R() < protonMinEndMom)
                             {
-                                protonMinEndMom = sim.endmom.R();
+                                protonMinEndMom = mctrack.endmom.R();
                             }
                         }
-                        if (sim.pdg == 1000010020)
+                        if (mctrack.pdg == 1000010020)
                         {
-                            if (sim.mom.R() > deutMaxStartMom)
+                            if (mctrack.mom.R() > deutMaxStartMom)
                             {
-                                deutMaxStartMom = sim.mom.R();
+                                deutMaxStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() > deutMaxEndMom)
+                            if (mctrack.endmom.R() > deutMaxEndMom)
                             {
-                                deutMaxEndMom = sim.endmom.R();
+                                deutMaxEndMom = mctrack.endmom.R();
                             }
-                            if (sim.mom.R() < deutMinStartMom)
+                            if (mctrack.mom.R() < deutMinStartMom)
                             {
-                                deutMinStartMom = sim.mom.R();
+                                deutMinStartMom = mctrack.mom.R();
                             }
-                            if (sim.endmom.R() < deutMinEndMom)
+                            if (mctrack.endmom.R() < deutMinEndMom)
                             {
-                                deutMinEndMom = sim.endmom.R();
+                                deutMinEndMom = mctrack.endmom.R();
                             }
                         }
                     }
-                }
             }
         }
   //Create the Histograms
@@ -245,43 +244,42 @@ void makePCandMomHists(string filelist)
     //Populate the Histograms
     for (int m_event = 0; m_event < numEvents; m_event++)
         {
-            const auto& event = util.GetEvent(m_event);
-            if (event.trkmcsim != nullptr)
-            {
-                for (const auto& trkmcsim : *(event.trkmcsim))
+            auto& event = util.GetEvent(m_event);
+            auto e_minus_tracks = event.GetTracks(is_e_minus);
+                for (auto& track : e_minus_tracks)
                 {
-                    for (const auto& sim : trkmcsim)
+                    for (auto& mctrack : *(track.trkmcsim))
                     {
                         //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice
-                        if (sim.pdg == 11) //electron
+                        if (mctrack.pdg == 11) //electron
                         {
-                            eMinusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
-                            eMinusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            eMinusPCStartMomHist->Fill(mctrack.mom.R(),mctrack.startCode);
+                            eMinusPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
                         }
 
-                        if (sim.pdg == -11) //positron
+                        if (mctrack.pdg == -11) //positron
                         {
-                            ePlusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
-                            ePlusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            ePlusPCStartMomHist->Fill(mctrack.mom.R(),mctrack.startCode);
+                            ePlusPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
 
                         }
 
-                        if (sim.pdg == 2212) //proton
+                        if (mctrack.pdg == 2212) //proton
                         {
-                            protonPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
-                            protonPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            protonPCStartMomHist->Fill(mctrack.mom.R(),mctrack.startCode);
+                            protonPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
                         }
 
-                        if (sim.pdg == 13) //muon
+                        if (mctrack.pdg == 13) //muon
                         {
-                            muMinusPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
-                            muMinusPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            muMinusPCStartMomHist->Fill(mctrack.mom.R(),mctrack.startCode);
+                            muMinusPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
                         }
 
-                        if (sim.pdg == 1000010020) //deuteron
+                        if (mctrack.pdg == 1000010020) //deuteron
                         {
-                            deutPCStartMomHist->Fill(sim.mom.R(),sim.startCode);
-                            deutPCEndMomHist->Fill(sim.endmom.R(),sim.startCode);
+                            deutPCStartMomHist->Fill(mctrack.mom.R(),mctrack.startCode);
+                            deutPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
                         }
                     }
                 }
@@ -352,4 +350,3 @@ void makePCandMomHists(string filelist)
 
     delete c1;
 }
-
