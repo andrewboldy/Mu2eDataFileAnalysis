@@ -85,7 +85,7 @@ void makeMomHists(string filelist)
                 {
                     for (const auto& mctrack : *(track.trkmcsim))
                     {
-                        if (mctrack.pdg == 11)
+                        if (mctrack.pdg == 11 && mctrack.rank == 0)
                         {
                             if (mctrack.mom.R() > eMinusMaxStartMom)
                             {
@@ -195,7 +195,7 @@ void makeMomHists(string filelist)
     protonStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons (Only track) by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..All Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     eMinusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
@@ -252,7 +252,7 @@ void makeMomHists(string filelist)
                   for (const auto& mctrack : *(track.trkmcsim))
                   {
                       //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice
-                      if (mctrack.pdg == 11) //electron
+                      if (mctrack.pdg == 11 && mctrack.rank == 0) //electron
                       {
                           eMinusStartMomHist->Fill(mctrack.mom.R());
                           eMinusEndMomHist->Fill(mctrack.endmom.R());
@@ -294,7 +294,7 @@ void makeMomHists(string filelist)
 
       eMinusStartMomHist->SetStats(0);
       eMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusOnlyTrackStartMomHistTest.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
