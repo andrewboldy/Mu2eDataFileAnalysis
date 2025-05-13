@@ -57,7 +57,7 @@ void eMinusMomCompare(string filelist)
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 70, 110);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 80, 110);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
