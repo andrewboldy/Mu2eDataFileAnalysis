@@ -196,7 +196,8 @@ void makeMomHists(string filelist)
     protonStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+    //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+     TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, 200);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons (Only track) by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..All Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     eMinusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
