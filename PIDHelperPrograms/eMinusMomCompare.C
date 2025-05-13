@@ -48,15 +48,15 @@ void eMinusMomCompare(string filelist)
   //Initialize the momenta histograms and canvas 
   TCanvas* c1 = new TCanvas("c1","c1");
   
-  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trkseg Branch",100,-0.5, 115);
+  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trkseg Branch",100, 70, 115);
   eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Tracker Reco Entrance Momentum (MeV/c)");
   eMinusTrkSegEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trksegmc Branch",100, -0.5, 115);
+  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trksegmc Branch",100, 70, 115);
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Tracker True Entrance Momentum (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) for rank 0 electrons from trkmcsim Branch", 100, -0.5, 115);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) for rank 0 electrons from trkmcsim Branch", 100, 70, 115);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Thrown Simulated Momentum (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
@@ -124,7 +124,7 @@ void eMinusMomCompare(string filelist)
   eMinusTrkSegMCEntMoms->SetLineColor(kRed);
   eMinusTrkSegMCEntMoms->Draw("SAME");
 
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3Compare.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3ComparePeakIso.pdf");
   c1->Clear();
   delete c1;
 } 
