@@ -23,6 +23,7 @@
 //CERN ROOT Inclusions
 #include <TCanvas.h>
 #include <TH1F.h>
+#include <TLegend.h>
 
 //Mu2e Inclusions
 #include "EventNtuple/utils/rooutil/inc/RooUtil.hh"
@@ -63,6 +64,10 @@ void eMinusMomCompare(string filelist)
   TH1F* eMinusTrkSegTrkSegMCDiff = new TH1F("eMinusTrkSegTrkSegMCDiff", "MDC2020anBestTest e Minus Momentum Difference (MeV/c) Between trkseg and trksegmc Branches", 50, -5,5);
   eMinusTrkSegTrkSegMCDiff->GetXaxis()->SetTitle("trkseg and trksegmc Momentum Differences (MeV/c)");
   eMinusTrkSegTrkSegMCDiff->SetStats(0);
+
+  TH1F* eMinusMCSimMoms = new TH1F("eMinusMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) from mcsim Branch under is_CeMinusEndpoint Cut", 100, -0.5, 115);
+  eMinusMCSimMoms->GetXaxis()->SetTitle("mcsim Branch Momentum (MeV/c)");
+  eMinusMCSimMoms->SetStats(0);
   
   //print the momenta from trkseg, trksegmc, and trkmcsim
   for (int i_event = 0; i_event < numEvents; i_event++)
@@ -94,9 +99,15 @@ void eMinusMomCompare(string filelist)
           eMinusTrkMCSimMoms->Fill(mctrack.mom.R()); 
         }
       }
+      auto CeMinusEndpoints = track.GetMCParticles(is_CeMinusEndpoint);
+      cout << "Printing mcsim momenta for CeMinusEndpoint." << endl;
+      for (auto& particle : CeMinusEndpoints)
+      {
+        cout << "mcsim Momentum (MeV/c): " << particle.mcsim->mom.R() << endl;
+      }
     }
   }
-  //Print out the Histograms on different canvases and then put them together just to see 
+  //Print out the Histograms on different canvases
   eMinusTrkSegEntMoms->Draw();
   c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegEntMoms.pdf");
   c1->Clear();
@@ -114,17 +125,22 @@ void eMinusMomCompare(string filelist)
   c1->Clear();
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
-
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
   eMinusTrkMCSimMoms->Draw();
 
-    eMinusTrkSegEntMoms->SetLineColor(kBlue);
+  eMinusTrkSegEntMoms->SetLineColor(kBlue);
   eMinusTrkSegEntMoms->Draw("SAME");
 
   eMinusTrkSegMCEntMoms->SetLineColor(kRed);
   eMinusTrkSegMCEntMoms->Draw("SAME");
+	
+  TLegend* legend = new TLegend(0.7, 0.7, 0.9, 0.9);
+  legend->AddEntry(eMinusTrkMCSimMoms, "trkmcsim", "l");
+  legend->AddEntry(eMinusTrkSegEntMoms, "trkseg", "l");
+  legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
+  legend->Draw();
 
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3ComparePeakIso.pdf");
-  c1->Clear();
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3Compare.pdf");
+
   delete c1;
 } 
