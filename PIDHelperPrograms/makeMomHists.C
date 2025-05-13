@@ -254,8 +254,8 @@ void makeMomHists(string filelist)
                   for (const auto& mctrack : *(track.trkmcsim))
                   {
                       //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice
-                      if (mctrack.pdg == 11)
-		      //if (mctrack.pdg == 11 && mctrack.rank == 0) //electron
+                      //if (mctrack.pdg == 11)
+		      if (mctrack.pdg == 11 && mctrack.rank == 0) //electron
                       {
                           eMinusStartMomHist->Fill(mctrack.mom.R());
                           eMinusEndMomHist->Fill(mctrack.endmom.R());
@@ -297,7 +297,8 @@ void makeMomHists(string filelist)
 
       eMinusStartMomHist->SetStats(0);
       eMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_Test.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
@@ -329,7 +330,8 @@ void makeMomHists(string filelist)
 
       eMinusEndMomHist->SetStats(0);
       eMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusEndMomHistMDC2020an_best_Test.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
