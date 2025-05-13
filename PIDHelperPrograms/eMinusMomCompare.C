@@ -115,13 +115,13 @@ void eMinusMomCompare(string filelist)
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
   eMinusTrkSegEntMoms->SetLineColor(kBlue);
-  eMinusTrkSegEntMoms->Draw("HIST E");
+  eMinusTrkSegEntMoms->Draw();
 
   eMinusTrkSegMCEntMoms->SetLineColor(kRed);
-  eMinusTrkSegMCEntMoms->Draw("HIST E SAME");
+  eMinusTrkSegMCEntMoms->Draw("SAME");
 
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
-  eMinusTrkMCSimMoms->Draw("HIST E SAME");
+  eMinusTrkMCSimMoms->Draw("SAME");
 
   c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3Compare.pdf");
   c1->Clear();
