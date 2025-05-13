@@ -57,7 +57,7 @@ void eMinusMomCompare(string filelist)
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Tracker True Entrance Momentum (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) for rank 0 electrons from trkmcsim Branch", 100, 90, 110);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) for rank 0 electrons from trkmcsim Branch", 100, 96, 110);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Thrown Simulated Momentum (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
@@ -126,6 +126,7 @@ void eMinusMomCompare(string filelist)
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
+  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms Around Peak");
   eMinusTrkMCSimMoms->Draw();
 
   eMinusTrkSegEntMoms->SetLineColor(kBlue);
