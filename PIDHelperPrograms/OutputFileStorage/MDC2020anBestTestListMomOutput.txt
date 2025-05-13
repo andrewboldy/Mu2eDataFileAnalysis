@@ -1,0 +1,13 @@
+
+Processing displayParticleMomentum.C++("/exp/mu2e/data/users/aboldy/MDC2020anBestTest.list")...
+There are 14 files in the list.
+Warning: this EventNtuple file does not contain a version number. It is either v06_02_00 or older. This is just a warning...
+There are 20084 entries. Calculating the maximum and minimum momenta for each particle type of interest.
+Calculation complete!
+Printing Results...
+| Min Start | Max Start | Min End | Max End | Momenta by Particle in MeV/c:
+Electron: | 0.00598773 | 2257.17 | 0 | 34.7993 | 
+Positron: | 0.577948 | 1438.03 | 0 | 51.0374 | 
+Muon: | 1.48222 | 141.745 | 0 | 85.8983 | 
+Proton: | 14.3482 | 8888.89 | 0 | 8888.89 | 
+Deuteron: | 154.066 | 606.183 | 0 | 580.638 | 

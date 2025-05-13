@@ -85,7 +85,8 @@ void makeMomHists(string filelist)
                 {
                     for (const auto& mctrack : *(track.trkmcsim))
                     {
-                        if (mctrack.pdg == 11 && mctrack.rank == 0)
+			if (mctrack.pdg == 11)    
+                        //if (mctrack.pdg == 11 && mctrack.rank == 0)
                         {
                             if (mctrack.mom.R() > eMinusMaxStartMom)
                             {
@@ -195,7 +196,8 @@ void makeMomHists(string filelist)
     protonStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons (Only track) by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+    TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
+    //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons (Only track) by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..All Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     eMinusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
@@ -252,7 +254,8 @@ void makeMomHists(string filelist)
                   for (const auto& mctrack : *(track.trkmcsim))
                   {
                       //Now that we are inside the object, we can populate our histograms || debating going between histogram drawing piece by pice
-                      if (mctrack.pdg == 11 && mctrack.rank == 0) //electron
+                      if (mctrack.pdg == 11)
+		      //if (mctrack.pdg == 11 && mctrack.rank == 0) //electron
                       {
                           eMinusStartMomHist->Fill(mctrack.mom.R());
                           eMinusEndMomHist->Fill(mctrack.endmom.R());
@@ -288,31 +291,31 @@ void makeMomHists(string filelist)
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonStartMomHist->SetStats(0);
       protonStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       eMinusStartMomHist->SetStats(0);
       eMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusOnlyTrackStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusStartMomHist->SetStats(0);
       ePlusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusStartMomHist->SetStats(0);
       muMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutStartMomHist->SetStats(0);
       deutStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
@@ -320,31 +323,31 @@ void makeMomHists(string filelist)
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonEndMomHist->SetStats(0);
       protonEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
       c1->Clear();
 
       eMinusEndMomHist->SetStats(0);
       eMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusEndMomHist->SetStats(0);
       ePlusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusEndMomHist->SetStats(0);
       muMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutEndMomHist->SetStats(0);
       deutEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistTest.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
