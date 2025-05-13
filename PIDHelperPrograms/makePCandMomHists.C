@@ -190,7 +190,8 @@ void makePCandMomHists(string filelist)
   TCanvas* c1 = new TCanvas("c1","c1");
 
   //next create a 2-d histogram with start momentum by process code (best to look at electron first!)
-    TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "MDC2020an_.._best_..Test Files Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
+    TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "MDC2020an_.._best_..Test Files Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, 200,193,-0.5,192.5);
+    //TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "MDC2020an_.._best_..Test Files Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
     //TH2F* eMinusPCStartMomHist = new TH2F("eMinusPCStartMomHist", "MDC2020an_.._best_..All Electrons by Process Code and Start Momentum", numBins,eMinusMinStartMom, eMinusMaxStartMom,193,-0.5,192.5);
     eMinusPCStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
     eMinusPCStartMomHist->GetYaxis()->SetTitle("Assigned ProcessCode from ProcessCode.hh");
