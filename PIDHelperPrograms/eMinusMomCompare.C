@@ -49,16 +49,16 @@ void eMinusMomCompare(string filelist)
   //Initialize the momenta histograms and canvas 
   TCanvas* c1 = new TCanvas("c1","c1");
   
-  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trkseg Branch",100, 90, 110);
-  eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Tracker Reco Entrance Momentum (MeV/c)");
+  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 70, 110);
+  eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) at entrance from trksegmc Branch",100, 90, 110);
-  eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Tracker True Entrance Momentum (MeV/c)");
+  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 70, 110);
+  eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) for rank 0 electrons from trkmcsim Branch", 100, 96, 110);
-  eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Thrown Simulated Momentum (MeV/c)");
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 70, 110);
+  eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
   TH1F* eMinusTrkSegTrkSegMCDiff = new TH1F("eMinusTrkSegTrkSegMCDiff", "MDC2020anBestTest e Minus Momentum Difference (MeV/c) Between trkseg and trksegmc Branches", 50, -5,5);
@@ -109,24 +109,24 @@ void eMinusMomCompare(string filelist)
   }
   //Print out the Histograms on different canvases
   eMinusTrkSegEntMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegEntMoms.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegEntMomsTest.pdf");
   c1->Clear();
 
   eMinusTrkSegMCEntMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegMCEntMoms.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegMCEntMomsTest.pdf");
   c1->Clear();
 
   eMinusTrkSegTrkSegMCDiff->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegTrkSegMCDiff.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegTrkSegMCDiffTest.pdf");
   c1->Clear();
 
   eMinusTrkMCSimMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkMCSimMoms.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkMCSimMomsTest.pdf");
   c1->Clear();
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
-  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms Around Peak");
+  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms");
   eMinusTrkMCSimMoms->Draw();
 
   eMinusTrkSegEntMoms->SetLineColor(kBlue);
@@ -141,7 +141,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
 
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3ComparePeakIso.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTest.pdf");
 
   delete c1;
 } 
