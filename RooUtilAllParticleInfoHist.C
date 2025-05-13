@@ -34,7 +34,6 @@
 
 //Switches
 bool DISPLAY_PARTICLE_INFO = true;
-bool DISPLAY_PARTICLE_INFO = true;
 
 void RooUtilAllParticleInfoHist()
 {
@@ -85,7 +84,7 @@ void RooUtilAllParticleInfoHist()
                         cout << "New Track!" << endl;
                         for (const auto& sim : trkmcsim)
                         {
-                            cout << "Entry Number: " << i_event
+                            cout << "Entry Number: " << i_event+1
                             << " PDG Number: " << sim.pdg
                             << " Tracker Hits: " << sim.nhits
                             << " Process Code: " << sim.startCode

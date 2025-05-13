@@ -53,10 +53,10 @@ void displayParticleInfo(std::string filelist)
       for (const auto& mctrack : *(track.trkmcsim))
       {
           cout << "Entry Number: " << i_event
-               << " PDG Number: " << mctrack.pdg
-               << " Tracker Hits: " << mctrack.nhits
-               << " Process Code: " << mctrack.startCode
-               << " Rank: " << mctrack.rank << endl;
+               << "; Geneology Particle PDG Number: " << mctrack.pdg
+               << "; Tracker Hits: " << mctrack.nhits
+               << "; Process Code: " << mctrack.startCode
+               << "; Rank: " << mctrack.rank << endl;
         }
       }
     }

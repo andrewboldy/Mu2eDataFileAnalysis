@@ -282,70 +282,79 @@ void makePCandMomHists(string filelist)
                             deutPCEndMomHist->Fill(mctrack.endmom.R(),mctrack.startCode);
                         }
                     }
-                }
             }
         }
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
         protonPCStartMomHist->SetStats(0);
        	protonPCStartMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/protonHists/protonPCStartMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/protonHists/protonPCStartMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/protonHists/protonPCStartMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/protonHists/protonPCStartMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/protonHists/protonPCStartMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       eMinusPCStartMomHist->SetStats(0);
+	eMinusPCStartMomHist->SetStats(0);
         eMinusPCStartMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCStartMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCStartMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCStartMomHistTest.pdf");
+         c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCStartMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCStartMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       ePlusPCStartMomHist->SetStats(0);
+	ePlusPCStartMomHist->SetStats(0);
         ePlusPCStartMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCStartMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCStartMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCStartMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCStartMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCStartMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	      muMinusPCStartMomHist->SetStats(0);
+	muMinusPCStartMomHist->SetStats(0);
         muMinusPCStartMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCStartMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCStartMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCStartMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCStartMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCStartMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       deutPCStartMomHist->SetStats(0);
+	deutPCStartMomHist->SetStats(0);
         deutPCStartMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/deutHists/deutPCStartMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/deutHists/deutPCStartMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/deutHists/deutPCStartMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/deutHists/deutPCStartMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/deutHists/deutPCStartMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
 
         //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
         protonPCEndMomHist->SetStats(0);
-	       protonPCEndMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/protonHists/protonPCEndMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/protonHists/protonPCEndMomHistMDC2020an_best_All.pdf");
+	protonPCEndMomHist->Draw();
+        //c1->SaveAs("multiFileHistograms/protonHists/protonPCEndMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/protonHists/protonPCEndMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/protonHists/protonPCEndMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       eMinusPCEndMomHist->SetStats(0);
+	eMinusPCEndMomHist->SetStats(0);
         eMinusPCEndMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCEndMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCEndMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCEndMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCEndMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/eMinusHists/eMinusPCEndMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       ePlusPCEndMomHist->SetStats(0);
+	ePlusPCEndMomHist->SetStats(0);
         ePlusPCEndMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCEndMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCEndMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCEndMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCEndMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/ePlusHists/ePlusPCEndMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       muMinusPCEndMomHist->SetStats(0);
+	muMinusPCEndMomHist->SetStats(0);
         muMinusPCEndMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCEndMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCEndMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCEndMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCEndMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/muMinusHists/muMinusPCEndMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
-	       deutPCEndMomHist->SetStats(0);
+	deutPCEndMomHist->SetStats(0);
         deutPCEndMomHist->Draw();
-        c1->SaveAs("multiFileHistograms/deutHists/deutPCEndMomHistTest.pdf");
-        //c1->SaveAs("multiFileHistograms/deutHists/deutPCEndMomHistMDC2020an_best_All.pdf");
+        //c1->SaveAs("multiFileHistograms/deutHists/deutPCEndMomHistTest.pdf");
+        c1->SaveAs("multiFileHistograms/deutHists/deutPCEndMomHistMDC2020an_best_Test.pdf");
+	//c1->SaveAs("multiFileHistograms/deutHists/deutPCEndMomHistMDC2020an_best_All.pdf");
         c1->Clear();
 
     delete c1;
