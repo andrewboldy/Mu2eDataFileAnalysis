@@ -134,7 +134,7 @@ void eMinusMomCompare(string filelist)
   eMinusTrkSegMCEntMoms->SetLineColor(kRed);
   eMinusTrkSegMCEntMoms->Draw("SAME");
 	
-  TLegend* legend = new TLegend(0.1, 0.7, 0.3, 0.9);
+  TLegend* legend = new TLegend(0.8, 0.8, 0.9, 0.9);
   legend->AddEntry(eMinusTrkMCSimMoms, "trkmcsim", "l");
   legend->AddEntry(eMinusTrkSegEntMoms, "trkseg", "l");
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
