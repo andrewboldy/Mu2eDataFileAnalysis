@@ -131,7 +131,7 @@ void eMinusPosPlotter(string filelist)
           eMinusYZPos->Fill(y,z);
 
           //TH3F (if possible)
-          
+          eMinusXYZPos->Fill(x,y,z);
         }
       }
     }
@@ -165,5 +165,8 @@ void eMinusPosPlotter(string filelist)
   c1->Clear();
   
   // TH3F (if possible)
+  TFile* eMinusXYZPosFile = new TFile("multiFileHistograms/eMinusHists/posHists/eMinusXYZPosHistOutput.root", "RECREATE");
+  eMinusXYZPos->Write();
+  eMinusXYZPosFile->Close();
 }
 
