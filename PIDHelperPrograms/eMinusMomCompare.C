@@ -49,15 +49,15 @@ void eMinusMomCompare(string filelist)
   //Initialize the momenta histograms and canvas 
   TCanvas* c1 = new TCanvas("c1","c1");
   
-  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 96, 110);
+  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 80, 110);
   eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 96, 110);
+  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 80, 110);
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 96, 110);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 80, 110);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
@@ -127,7 +127,7 @@ void eMinusMomCompare(string filelist)
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
-  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms Around Peak");
+  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms");
   eMinusTrkMCSimMoms->Draw();
 
   eMinusTrkSegEntMoms->SetLineColor(kBlue);
@@ -142,7 +142,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
   c1->SetLogy();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3ComparePeakIsoLogTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTest.pdf");
  
   delete c1;
 } 
