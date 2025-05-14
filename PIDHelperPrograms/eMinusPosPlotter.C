@@ -52,30 +52,30 @@ void eMinusPosPlotter(string filelist)
   TCanvas* c1 = new TCanvas("c1","c1");
 
   //Initialize TH1Fs
-  TH1F* eMinusXPos = new TH1F("eMinusXPos", "x Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",400,-1000,1000);
+  TH1F* eMinusXPos = new TH1F("eMinusXPos", "x Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",320,-800,800);
   eMinusXPos->GetXaxis()->SetTitle("x Position (mm)");
-  TH1F* eMinusYPos = new TH1F("eMinusYPos","y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 400, -1000, 1000);
+  TH1F* eMinusYPos = new TH1F("eMinusYPos","y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 320, -800, 800);
   eMinusYPos->GetXaxis()->SetTitle("y Position (mm)");
-  TH1F* eMinusZPos = new TH1F("eMinusZPos","z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 3000, -8000, 7000);
+  TH1F* eMinusZPos = new TH1F("eMinusZPos","z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 2100, -6500, 4000);
   eMinusZPos->GetXaxis()->SetTitle("z Position (mm)");
-  TH1F* eMinusXYRadiusPos = new TH1F("eMinusXYRadiusPos", "XY Plane Radius Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",200,0,1000);
+  TH1F* eMinusXYRadiusPos = new TH1F("eMinusXYRadiusPos", "XY Plane Radius Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",150,0,750);
   eMinusXYRadiusPos->GetXaxis()->SetTitle("xy Radial Position (mm)");
   TH1F* eMinusPosMagnitude = new TH1F("eMinusPosMagnitude", "Position Magnitude of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",1000,0,6500);
   eMinusPosMagnitude->GetXaxis()->SetTitle("Position Magnitude (mm)");
 
   //Initialize TH2Fs
-  TH2F* eMinusXYPos = new TH2F("eMinusXYPos", "x,y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",20000,-10000,10000,20000,-10000,10000);
+  TH2F* eMinusXYPos = new TH2F("eMinusXYPos", "x,y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",320,-800,800,320,-800,800);
   eMinusXYPos->GetXaxis()->SetTitle("x Position (mm)");
   eMinusXYPos->GetYaxis()->SetTitle("y Position (mm)");
-  TH2F* eMinusXZPos = new TH2F("eMinusXZPos", "x,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",20000,-10000,10000,20000,-10000,10000);
+  TH2F* eMinusXZPos = new TH2F("eMinusXZPos", "x,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",320,-800,800,2100,-6500,4000);
   eMinusXZPos->GetXaxis()->SetTitle("x Position (mm)");
   eMinusXZPos->GetYaxis()->SetTitle("y Position (mm)");
-  TH2F* eMinusYZPos = new TH2F("eMinusYZPos", "y,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",20000,-10000,10000,20000,-10000,10000);
+  TH2F* eMinusYZPos = new TH2F("eMinusYZPos", "y,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",320,-800,800,2100,-6500,4000);
   eMinusYZPos->GetXaxis()->SetTitle("y Position (mm)");
   eMinusYZPos->GetYaxis()->SetTitle("z Position (mm)");
 
   //Initialize TH3Fs (unsure how to do this yet)
-  TH3F* eMinusXYZPos = new TH3F("eMinusXYZPos", "x,y,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 20000,-10000,10000,20000,-10000,10000,20000,-10000,10000);
+  TH3F* eMinusXYZPos = new TH3F("eMinusXYZPos", "x,y,z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 320,-800,800,320,-800,800,2100,-6500,4000);
   eMinusXYZPos->GetXaxis()->SetTitle("x Position (mm)");
   eMinusXYZPos->GetYaxis()->SetTitle("y Position (mm)");
   eMinusXYZPos->GetZaxis()->SetTitle("z Position (mm)");
@@ -88,9 +88,9 @@ void eMinusPosPlotter(string filelist)
   //Loop through events
   for (int i_event = 0; i_event < numEvents; i_event++)
   {
-    cout << " " << endl;
-    cout << "Printing Particle Positions for Particles in Event Number: " << i_event+1 << endl;
-    cout << "-----------------------------------------------------------------" << endl; //Creating a break between events 
+    //cout << " " << endl;
+    //cout << "Printing Particle Positions for Particles in Event Number: " << i_event+1 << endl;
+    //cout << "-----------------------------------------------------------------" << endl; //Creating a break between events 
     auto& event = util.GetEvent(i_event);
     auto e_minus_tracks = event.GetTracks(is_e_minus);
 
@@ -110,7 +110,7 @@ void eMinusPosPlotter(string filelist)
           float magPos = particle.mcsim->pos.R();
 
           //Print out the various position values we are interested in
-          cout << "e x Pos: " << x 
+          //cout << "e x Pos: " << x 
                << "; e y Pos: " << y
                << "; e z Pos: " << z
                << "; e xy radial Pos: " << xyR 
