@@ -142,7 +142,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
 
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTestPeakIso.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3ComparePeakIsoTest.pdf");
 
   delete c1;
 } 
