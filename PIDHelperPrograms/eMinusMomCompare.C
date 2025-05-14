@@ -49,15 +49,15 @@ void eMinusMomCompare(string filelist)
   //Initialize the momenta histograms and canvas 
   TCanvas* c1 = new TCanvas("c1","c1");
   
-  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 70, 110);
+  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 96, 110);
   eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 70, 110);
+  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 96, 110);
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 80, 110);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 96, 110);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
@@ -80,7 +80,8 @@ void eMinusMomCompare(string filelist)
     for (auto& track : e_minus_tracks)
     {
       auto trackEntSegments = track.GetSegments([](TrackSegment& segment){ return tracker_entrance(segment) && has_mc_step(segment) && has_reco_step(segment); });
-      cout << "Printing trkseg and trksegmc momenta at the entrace with momenta." << endl;
+      //cout << trackEntSegments.size() << endl;
+      if (trackEntSegments.size() > 0) {cout << "Printing trkseg and trksegmc momenta at the entrace." << endl;}
       for (auto& segment : trackEntSegments)
       {
         cout << "trkseg Momentum (MeV/c): " << segment.trkseg->mom.R() 
@@ -90,7 +91,7 @@ void eMinusMomCompare(string filelist)
         eMinusTrkSegMCEntMoms->Fill(segment.trksegmc->mom.R());
         eMinusTrkSegTrkSegMCDiff->Fill(segment.trkseg->mom.R() - segment.trksegmc->mom.R());
       }
-      cout << "Printing trkmcsim momenta for rank 0 electrons only." << endl;
+      if (track.trkmcsim != nullptr) {cout << "Printing trkmcsim momenta for rank 0 electrons only." << endl;}
       for (auto& mctrack : *(track.trkmcsim))
       {
         if (mctrack.pdg == 11 && mctrack.rank == 0)
@@ -126,7 +127,7 @@ void eMinusMomCompare(string filelist)
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
   eMinusTrkMCSimMoms->SetLineColor(kGreen);
-  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms");
+  eMinusTrkMCSimMoms->SetTitle("Combined trkseg, trksegmc, and trkmcsim Momenta Histograms Around Peak");
   eMinusTrkMCSimMoms->Draw();
 
   eMinusTrkSegEntMoms->SetLineColor(kBlue);
@@ -141,7 +142,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
 
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTestPeakIso.pdf");
 
   delete c1;
 } 
