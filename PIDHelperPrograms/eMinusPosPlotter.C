@@ -126,6 +126,9 @@ void eMinusPosPlotter(string filelist)
           eMinusPosMagnitude->Fill(magPos);
           
           // TH2Fs
+	  eMinusXYPos->Fill(x,y);
+          eMinusXZPos->Fill(x,z);
+          eMinusYZPos->Fill(y,z);
 
           //TH3F (if possible)
           
@@ -151,7 +154,16 @@ void eMinusPosPlotter(string filelist)
   c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusPosMagnitude_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   // TH2Fs
-
+  eMinusXYPos->Draw();
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXYPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->Clear();
+  eMinusXZPos->Draw();
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXZPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->Clear();
+  eMinusYZPos->Draw();
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusYZPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->Clear();
+  
   // TH3F (if possible)
 }
 
