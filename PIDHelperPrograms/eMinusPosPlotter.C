@@ -52,15 +52,15 @@ void eMinusPosPlotter(string filelist)
   TCanvas* c1 = new TCanvas("c1","c1");
 
   //Initialize TH1Fs
-  TH1F* eMinusXPos = new TH1F("eMinusXPos", "x Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",20000,-10000,10000);
+  TH1F* eMinusXPos = new TH1F("eMinusXPos", "x Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",400,-1000,1000);
   eMinusXPos->GetXaxis()->SetTitle("x Position (mm)");
-  TH1F* eMinusYPos = new TH1F("eMinusYPos","y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 20000, -10000, 10000);
+  TH1F* eMinusYPos = new TH1F("eMinusYPos","y Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 400, -1000, 1000);
   eMinusYPos->GetXaxis()->SetTitle("y Position (mm)");
-  TH1F* eMinusZPos = new TH1F("eMinusZPos","z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 20000, -10000, 10000);
+  TH1F* eMinusZPos = new TH1F("eMinusZPos","z Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered", 3000, -8000, 7000);
   eMinusZPos->GetXaxis()->SetTitle("z Position (mm)");
-  TH1F* eMinusXYRadiusPos = new TH1F("eMinusXYRadiusPos", "XY Plane Radius Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",10000,0,10000);
+  TH1F* eMinusXYRadiusPos = new TH1F("eMinusXYRadiusPos", "XY Plane Radius Position of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",200,0,1000);
   eMinusXYRadiusPos->GetXaxis()->SetTitle("xy Radial Position (mm)");
-  TH1F* eMinusPosMagnitude = new TH1F("eMinusPosMagnitude", "Position Magnitude of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",10000,0,10000);
+  TH1F* eMinusPosMagnitude = new TH1F("eMinusPosMagnitude", "Position Magnitude of Electrons in the Tracker Simulation for MDC2020anBestTest for CeEndpointMix1BBTriggered",1000,0,6500);
   eMinusPosMagnitude->GetXaxis()->SetTitle("Position Magnitude (mm)");
 
   //Initialize TH2Fs
