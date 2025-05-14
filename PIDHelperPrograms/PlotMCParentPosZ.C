@@ -15,7 +15,7 @@
 void PlotMCParentPosZ(std::string filename) {
 
   // Create the histogram you want to fill
-  TH1F* hParentPosZ = new TH1F("hParentPosZ", "", 20000,-10000,10000);
+  TH1F* hParentPosZ = new TH1F("hParentPosZ", "", 7000,3000,10000);
   TCanvas* c1 = new TCanvas("c1","c1");
   // Set up RooUtil
   RooUtil util(filename);
