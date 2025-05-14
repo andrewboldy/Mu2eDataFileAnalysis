@@ -15,7 +15,7 @@
 void PlotMuonPosZ(std::string filename) {
 
   // Create the histogram you want to fill
-  TH1F* hMuonPosZ = new TH1F("hMuonPosZ", "", 6000,4000,10000);
+  TH1F* hMuonPosZ = new TH1F("hMuonPosZ", "", 20000,-10000,10000);
   TCanvas* c1 = new TCanvas("c1","c1");
   // Set up RooUtil
   RooUtil util(filename);
