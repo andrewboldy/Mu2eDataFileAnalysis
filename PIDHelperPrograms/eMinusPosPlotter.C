@@ -100,7 +100,7 @@ void eMinusPosPlotter(string filelist)
       
       for (auto& particle : all_particles)
       {
-        if (particle.mcsim->pdg==11)
+        if (particle.mcsim->pdg==11 && particle.mcsim->rank==0)
         {
           //Define variables
           float x = particle.mcsim->pos.x();
@@ -139,33 +139,33 @@ void eMinusPosPlotter(string filelist)
   //Draw Histograms
   // TH1Fs
   eMinusXPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusXPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusYPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusYPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusYPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusZPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusZPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusZPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusXYRadiusPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXYRadiusPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusXYRadiusPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusPosMagnitude->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusPosMagnitude_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusPosMagnitude_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   // TH2Fs
   eMinusXYPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXYPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusXYPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusXZPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusXZPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusXZPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   eMinusYZPos->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/eMinusYZPos_MDC2020anBestCeEndpointTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/posHists/rank0eMinusYZPos_MDC2020anBestCeEndpointTest.pdf");
   c1->Clear();
   
   // TH3F (if possible)
-  TFile* eMinusXYZPosFile = new TFile("multiFileHistograms/eMinusHists/posHists/eMinusXYZPosHistOutput.root", "RECREATE");
+  TFile* eMinusXYZPosFile = new TFile("multiFileHistograms/eMinusHists/posHists/rank0eMinusXYZPosHistOutput.root", "RECREATE");
   eMinusXYZPos->Write();
   eMinusXYZPosFile->Close();
 }
