@@ -7,8 +7,9 @@
 
 //----------------------------------------------------------------------------------
 
-//Creates particle start histograms and saves them in the appropriate folder.
-//Testing --> Have names of histograms to be denoted as "Test". For formal analysis, switch to the non-test lines
+//Creates particle start and end histograms and saves them in the appropriate folder.
+//commenting out lines to change the folder they go in for various different datasets and whether test or full dataset
+
 
 //----------------------------------------------------------------------------------
 
@@ -64,26 +65,21 @@ void makeMomHistsMCParticleCuts(string filelist)
   //CeEndpoint
   TH1F* CeEndpointStartMomHist = new TH1F("CeEndpointStartMomHist", "Starting Momentum for CeMinusEndpoint MCParticle Cut", 55, 0, 110);
   CeEndpointStartMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  CeEndpointStartMomHist->SetStats(0);
   TH1F* CeEndpointEndMomHist = new TH1F("CeEndpointEndMomHist", "Ending Momentum for CeMinusEndpoint MCParticleCut", 55, 0 ,5);
   CeEndpointEndMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  CeEndpointEndMomHist->SetStats(0);
-
+  
   //DIO
   TH1F* DIOStartMomHist = new TH1F("DIOStartMomHist", "Starting Momentum for DIO MCParticle Cut", 55, 0, 110);
   DIOStartMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  DIOStartMomHist->SetStats(0);
   TH1F* DIOEndMomHist = new TH1F("DIOEndMomHist", "Ending Momentum for DIO MCParticle Cut", 55, 0, 5);
   DIOEndMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  DIOEndMomHist->SetStats(0);
 
   //Cosmics
   TH1F* cosmicStartMomHist = new TH1F("CosmicStartMomHist", "Starting Momentum for Cosmic MCParticle Cut", 55, 0, 110);
   cosmicStartMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  cosmicStartMomHist->SetStats(0);
   TH1F* cosmicEndMomHist = new TH1F("CosmicEndMomHist", "Ending Momentum for Cosmic MCParticle Cut", 55, 0, 5);
   cosmicEndMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  cosmicEndMomHist->SetStats(0);
+
 
   //Run Over Events and Populate
   for (int i_events = 0; i_events < numEvents; i_events++)
@@ -120,29 +116,47 @@ void makeMomHistsMCParticleCuts(string filelist)
 
   //CeEndpoint
   CeEndpointStartMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/CeEndpointStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointStartMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointStartMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020arDIOtail/CeEndpointStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020arDIOtail/CeEndpointStartMomHistAll.pdf");
   c1->Clear();
 
   CeEndpointEndMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/CeEndpointEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointEndMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointEndMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020arDIOtail/CeEndpointEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/CeEndpointHists/MDC2020arDIOtail/CeEndpointEndMomHistAll.pdf");
   c1->Clear();
 
   //DIO
   DIOStartMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/DIOStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020anBestCeEndpoint1BBMix/DIOStartMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020anBestCeEndpoint1BBMix/DIOStartMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020arDIOtail/DIOStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020arDIOtail/DIOStartMomHistAll.pdf");
   c1->Clear();
 
   DIOEndMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/DIOEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020anBestCeEndpoint1BBMix/DIOEndMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020anBestCeEndpoint1BBMix/DIOEndMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020arDIOtail/DIOEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/DIOHists/MDC2020arDIOtail/DIOEndMomHistAll.pdf");
   c1->Clear();
 
   //Cosmics
   cosmicStartMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/cosmicStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020anBestCeEndpoint1BBMix/cosmicStartMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020anBestCeEndpoint1BBMix/cosmicStartMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020arDIOtail/cosmicStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020arDIOtail/cosmicStartMomHistAll.pdf");
   c1->Clear();
 
   cosmicEndMomHist->Draw();
-  c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/cosmicEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020anBestCeEndpoint1BBMix/cosmicEndMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020anBestCeEndpoint1BBMix/cosmicEndMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020arDIOtail/cosmicEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/cosmicHists/MDC2020arDIOtail/cosmicEndMomHistAll.pdf");
   c1->Clear();
   
   //Combined Start Histogram
@@ -160,8 +174,12 @@ void makeMomHistsMCParticleCuts(string filelist)
   startLegend->AddEntry(DIOStartMomHist, "DIO", "f");
   startLegend->AddEntry(cosmicStartMomHist, "Cosmics", "f");
   startLegend->Draw();
+  
   c1->SetLogy();
-  c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/CeEndpointDIOCosmicStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointDIOCosmicStartMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointDIOCosmicStartMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020arDIOtail/CeEndpointDIOCosmicStartMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020arDIOtail/CeEndpointDIOCosmicStartMomHistAll.pdf");
   c1->Clear();
 
   //Combined End Histogram
@@ -179,6 +197,10 @@ void makeMomHistsMCParticleCuts(string filelist)
   endLegend->AddEntry(DIOEndMomHist, "DIO", "f");
   endLegend->AddEntry(cosmicEndMomHist, "Cosmics", "f");
   endLegend->Draw();
+
   c1->SetLogy();
-  c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/CeEndpointDIOCosmicEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointDIOCosmicEndMomHistTest.pdf");
+  c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020anBestCeEndpoint1BBMix/CeEndpointDIOCosmicEndMomHistAll.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020arDIOtail/CeEndpointDIOCosmicEndMomHistTest.pdf");
+  //c1->SaveAs("multiFileHistograms/processCutHists/combinedProcessHists/MDC2020arDIOtail/CeEndpointDIOCosmicEndMomHistAll.pdf");
 }
