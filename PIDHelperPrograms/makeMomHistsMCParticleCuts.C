@@ -77,7 +77,7 @@ void makeMomHistsMCParticleCuts(string filelist)
   //Cosmics
   TH1F* cosmicStartMomHist = new TH1F("CosmicStartMomHist", "Starting Momentum for Cosmic MCParticle Cut", 2000, 0, 10000);
   cosmicStartMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
-  TH1F* cosmicEndMomHist = new TH1F("CosmicEndMomHist", "Ending Momentum for Cosmic MCParticle Cut", 2000, 0, 10000);
+  TH1F* cosmicEndMomHist = new TH1F("CosmicEndMomHist", "Ending Momentum for Cosmic MCParticle Cut", 240, 0, 1200);
   cosmicEndMomHist->GetXaxis()->SetTitle("Momentum (MeV/c)");
 
 
