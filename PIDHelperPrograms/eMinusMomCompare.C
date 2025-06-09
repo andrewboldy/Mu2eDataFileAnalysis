@@ -49,15 +49,15 @@ void eMinusMomCompare(string filelist)
   //Initialize the momenta histograms and canvas 
   TCanvas* c1 = new TCanvas("c1","c1");
   
-  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 80, 110);
+  TH1F* eMinusTrkSegEntMoms = new TH1F("eMinusTrkSegEntMoms", "MDC2020anBestTest e Minus Tracker Entrance Reco Momenta (trkseg)",100, 0, 130);
   eMinusTrkSegEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 80, 110);
+  TH1F* eMinusTrkSegMCEntMoms = new TH1F("eMinusTrkSegMCEntMoms", "MDC2020anBestTest e Minus Tracker Entrance True Momenta (trksegmc)",100, 0, 130);
   eMinusTrkSegMCEntMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkSegMCEntMoms->SetStats(0);
 
-  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 80, 110);
+  TH1F* eMinusTrkMCSimMoms = new TH1F("eMinusTrkMCSimMoms", "MDC2020anBestTest Thrown e Minus Simulated Momenta (trkmcsim)", 100, 0, 130);
   eMinusTrkMCSimMoms->GetXaxis()->SetTitle("Momentum Magnitude (MeV/c)");
   eMinusTrkMCSimMoms->SetStats(0);
   
@@ -65,7 +65,7 @@ void eMinusMomCompare(string filelist)
   eMinusTrkSegTrkSegMCDiff->GetXaxis()->SetTitle("trkseg and trksegmc Momentum Differences (MeV/c)");
   eMinusTrkSegTrkSegMCDiff->SetStats(0);
 
-  TH1F* eMinusMCSimMoms = new TH1F("eMinusMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) from mcsim Branch under is_CeMinusEndpoint Cut", 100, -0.5, 115);
+  TH1F* eMinusMCSimMoms = new TH1F("eMinusMCSimMoms", "MDC2020anBestTest e Minus Momenta (MeV/c) from mcsim Branch under is_CeMinusEndpoint Cut", 100, 0, 130);
   eMinusMCSimMoms->GetXaxis()->SetTitle("mcsim Branch Momentum (MeV/c)");
   eMinusMCSimMoms->SetStats(0);
   
