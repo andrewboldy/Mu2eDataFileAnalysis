@@ -141,7 +141,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegEntMoms, "trkseg", "l");
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
-  c1->SetLogy();
+  //c1->SetLogy();
   c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinus3CompareAll.pdf");
  
   delete c1;
