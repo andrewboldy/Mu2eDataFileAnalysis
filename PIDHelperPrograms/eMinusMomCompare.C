@@ -91,10 +91,10 @@ void eMinusMomCompare(string filelist)
         eMinusTrkSegMCEntMoms->Fill(segment.trksegmc->mom.R());
         eMinusTrkSegTrkSegMCDiff->Fill(segment.trkseg->mom.R() - segment.trksegmc->mom.R());
       }
-      if (track.trkmcsim != nullptr) {cout << "Printing trkmcsim momenta for rank 0 electrons only." << endl;}
+      if (track.trkmcsim != nullptr) {cout << "Printing trkmcsim momenta." << endl;}
       for (auto& mctrack : *(track.trkmcsim))
       {
-        if (mctrack.pdg == 11 && mctrack.rank == 0)
+        if (mctrack.pdg == 11)
         {
           cout << "trkmcsim Momentum (MeV/c): " << mctrack.mom.R() << endl;
           eMinusTrkMCSimMoms->Fill(mctrack.mom.R()); 
@@ -110,19 +110,19 @@ void eMinusMomCompare(string filelist)
   }
   //Print out the Histograms on different canvases
   eMinusTrkSegEntMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegEntMomsTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinusTrkSegEntMomsAll.pdf");
   c1->Clear();
 
   eMinusTrkSegMCEntMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegMCEntMomsTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinusTrkSegMCEntMomsAll.pdf");
   c1->Clear();
 
   eMinusTrkSegTrkSegMCDiff->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkSegTrkSegMCDiffTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinusTrkSegTrkSegMCDiffAll.pdf");
   c1->Clear();
 
   eMinusTrkMCSimMoms->Draw();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinusTrkMCSimMomsTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinusTrkMCSimMomsAll.pdf");
   c1->Clear();
 
   //Print out the histograms for trkseg, trksegmc, and trkmcsim on the same canvas 
@@ -142,7 +142,7 @@ void eMinusMomCompare(string filelist)
   legend->AddEntry(eMinusTrkSegMCEntMoms, "trksegmc", "l");
   legend->Draw();
   c1->SetLogy();
-  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/eMinus3CompareTest.pdf");
+  c1->SaveAs("multiFileHistograms/eMinusHists/momCompares/DIOeMinus3CompareAll.pdf");
  
   delete c1;
 } 
