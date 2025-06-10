@@ -82,8 +82,8 @@ void makeMomHistsMCParticleCuts(string filelist)
 
 
   //Run Over Events and Populate
-  //for (int i_events = 0; i_events < numEvents; i_events++)
-  for (int i_events = 0; i_events < 50; i_events++)
+  for (int i_events = 0; i_events < numEvents; i_events++)
+  //for (int i_events = 0; i_events < 50; i_events++)
   {
     auto& event = util.GetEvent(i_events);
     auto e_minus_tracks = event.GetTracks(is_e_minus);
