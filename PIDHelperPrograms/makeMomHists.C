@@ -191,57 +191,57 @@ void makeMomHists(string filelist)
   //Make the TCanvas
   TCanvas* c1 = new TCanvas("c1","c1");
   //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "MDC2020an_.._best_..Test Files Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
+    TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "Files Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
     //TH1F* protonStartMomHist = new TH1F("protonStartMomHist", "MDC2020an_.._best_..All Protons by Start Momentum", numBins, protonMinStartMom,protonMaxStartMom);
     protonStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
-     TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons  by Start Momentum", numBins, eMinusMinStartMom, 200);
+     TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "Electrons  by Start Momentum", numBins, eMinusMinStartMom, 200);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..Test Files Electrons (Only track) by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     //TH1F* eMinusStartMomHist = new TH1F("eMinusStartMomHist", "MDC2020an_.._best_..All Electrons by Start Momentum", numBins, eMinusMinStartMom, eMinusMaxStartMom);
     eMinusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* ePlusStartMomHist = new TH1F("ePlusStartMomHist", "MDC2020an_.._best_..Test Files Positrons by Start Momentum", numBins, ePlusMinStartMom,ePlusMaxStartMom);
+    TH1F* ePlusStartMomHist = new TH1F("ePlusStartMomHist", "Positrons by Start Momentum", numBins, ePlusMinStartMom,ePlusMaxStartMom);
     //TH1F* ePlusStartMomHist = new TH1F("ePlusStartMomHist", "MDC2020an_.._best_..All Positrons by Start Momentum", numBins, ePlusMinStartMom,ePlusMaxStartMom);
     ePlusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* muMinusStartMomHist = new TH1F("muMinusStartMomHist", "MDC2020an_.._best_..Test Files Muons by Start Momentum", numBins, muMinStartMom, muMaxStartMom);
+    TH1F* muMinusStartMomHist = new TH1F("muMinusStartMomHist", "Muons by Start Momentum", numBins, muMinStartMom, muMaxStartMom);
     //TH1F* muMinusStartMomHist = new TH1F("muMinusStartMomHist", "MDC2020an_.._best_..All Muons by Start Momentum", numBins, muMinStartMom, muMaxStartMom);
     muMinusStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* deutStartMomHist = new TH1F("deutStartMomHist", "MDC2020an_.._best_..Test Files Deuterons by Start Momentum", numBins, deutMinStartMom, deutMaxStartMom);
+    TH1F* deutStartMomHist = new TH1F("deutStartMomHist", "Deuterons by Start Momentum", numBins, deutMinStartMom, deutMaxStartMom);
     //TH1F* deutStartMomHist = new TH1F("deutStartMomHist", "MDC2020an_.._best_..All Deuterons by Start Momentum", numBins, deutMinStartMom, deutMaxStartMom);
     deutStartMomHist->GetXaxis()->SetTitle("Start Momentum (MeV/c)");
 
     //initialize the proton momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "MDC2020an_.._best_..Test Files Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
+    TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
     //TH1F* protonEndMomHist = new TH1F("protonEndMomHist", "MDC2020an_.._best_..All Protons by End Momentum", numBins, protonMinEndMom,protonMaxEndMom);
     protonEndMomHist->GetXaxis()->SetTitle("End Momentum (MeV/c)");
 
     //initalize the electron momentum histogram //need to get to the point where we have constructed the histograms correctly
     //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "MDC2020an_.._best_..All Electrons by End Momentum", numBins, eMinusMinEndMom, eMinusMaxEndMom);
-    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "MDC2020an_.._best_..Test Files Electrons by End Momentum", numBins, 0, 5);
+    TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "Electrons by End Momentum", numBins, 0, 5);
     //TH1F* eMinusEndMomHist = new TH1F("eMinusEndMomHist", "MDC2020an_.._best_..All Electrons by End Momentum", numBins, 0, 5);
     eMinusEndMomHist->GetXaxis()->SetTitle("End Momentum (MeV/c)");
 
     //initialize the positron momentum histogram //need to get to the point where we have constructed the histograms correctly
     //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "MDC2020an_.._best_..All Positrons by End Momentum", numBins, ePlusMinEndMom,ePlusMaxEndMom);
-    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "MDC2020an_.._best_..Test Files Positrons by End Momentum", numBins, 0,5);
+    TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "Positrons by End Momentum", numBins, 0,5);
     //TH1F* ePlusEndMomHist = new TH1F("ePlusEndMomHist", "MDC2020an_.._best_..All Positrons by End Momentum", numBins, 0,5);
     ePlusEndMomHist->GetXaxis()->SetTitle("End Momentum (MeV/c)");
 
     //initialize the muon momentum histogram //need to get to the point where we have constructed the histograms correctly
-    TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "MDC2020an_.._best_..Test Files Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
+    TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
     //TH1F* muMinusEndMomHist = new TH1F("muMinusEndMomHist", "MDC2020an_.._best_..All Muons by End Momentum", numBins, muMinEndMom, muMaxEndMom);
     muMinusEndMomHist->GetXaxis()->SetTitle("End Momentum (MeV/c)");
 
     //inialize the deuteron momentum histogram //need to get to the point where we have constructed the histograms correctly
    //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "MDC2020an_.._best_..All Deuterons by End Momentum", numBins, deutMinEndMom, deutMaxEndMom);
-    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "MDC2020an_.._best_..Test Files Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
+    TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
     //TH1F* deutEndMomHist = new TH1F("deutEndMomHist", "MDC2020an_.._best_..All Deuterons by End Momentum", numBins, 0, 5); //want to look specifically at the peak around 0 to determine by low momentum
     deutEndMomHist->GetXaxis()->SetTitle("End Momentum (MeV/c)");
 
@@ -292,32 +292,37 @@ void makeMomHists(string filelist)
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonStartMomHist->SetStats(0);
       protonStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_Test.pdf");
+       c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/protonHists/protonStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       eMinusStartMomHist->SetStats(0);
       eMinusStartMomHist->Draw();
+      c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDS1bAll.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_Test.pdf");
-      c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusStartMomHistMDC2020an_best_Test.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusStartMomHist->SetStats(0);
       ePlusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusStartMomHist->SetStats(0);
       muMinusStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutStartMomHist->SetStats(0);
       deutStartMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/deutHists/deutStartMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
@@ -325,32 +330,37 @@ void makeMomHists(string filelist)
       //Momentum Histograms (need to get the histograms right first, so need to first look at the relevant numbers)
       protonEndMomHist->SetStats(0);
       protonEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/protonHists/protonEndMomHistMDC2020an_best_Test.pdf");
       c1->Clear();
 
       eMinusEndMomHist->SetStats(0);
       eMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusEndMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/eMinusHists/rank0eMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/eMinusHists/eMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       ePlusEndMomHist->SetStats(0);
       ePlusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/ePlusHists/ePlusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       muMinusEndMomHist->SetStats(0);
       muMinusEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/muMinusHists/muMinusEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
       deutEndMomHist->SetStats(0);
       deutEndMomHist->Draw();
-      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_Test.pdf");
+      c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDS1bAll.pdf");
+      //c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_Test.pdf");
       //c1->SaveAs("multiFileHistograms/deutHists/deutEndMomHistMDC2020an_best_All.pdf");
       c1->Clear();
 
